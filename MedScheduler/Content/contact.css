@@ -1,0 +1,212 @@
+﻿body {
+    /*
+        background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210928/pngtree-geometric-carbon-based-structure-health-care-light-effect-background-image_907490.png");
+    background-size: cover;
+   */
+    padding:0;
+    margin:0;
+}
+/* contact session */
+* {
+    /* overflow: hidden; */
+}
+
+.conatact{
+    /* background-color: lightseagreen; */
+    background-size: cover;
+    /**/ 
+    height: auto;
+    width:100%;
+}
+
+
+
+
+
+.headingContactsession {
+    text-align: center;
+    margin: 60px;
+    font-size: 70px;
+    font-weight: 700;
+    font-family: 'EB Garamond', serif;
+}
+
+/* .parentdivContactsession{
+  margin: auto;  
+} */
+/* .conatactContainer{
+    padding: 250px;
+} */
+.parentdivContactsession {
+    width: 100%;
+    display: flex;
+    padding: 2% 2%;
+    /* text-align: center; */
+}
+
+.conatactContainer {
+    width: 100%;
+    padding: 10px;
+}
+
+.formTagDiv {
+    width: 100%;
+    background-color: rgba(139, 240, 128, 0.1);
+    margin: auto;
+}
+
+.formTag {
+    padding: 5% 10%;
+    margin:auto;
+}
+
+    .formTag div {
+        width: 100%;
+        /* background-color: blue; */
+    }
+
+.googleMap {
+    width: 50%;
+}
+
+.iframeGooglemap {
+    width: 80%;
+    height: 100%;
+}
+
+.formTag div {
+    width: 100%;
+    background-color:brown;
+}
+
+    .formTag div input,
+    .formTag div textarea {
+        width: 75%;
+        height: 40px;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        font-size: 20px;
+        font-weight: 500;
+        border: none;
+        outline: none;
+        padding: 4px;
+        font-family: 'EB Garamond', serif;
+    }
+
+.formTag textarea {
+    width: 50%;
+    margin-top: 10px;
+}
+
+.divButton {
+    width: 100%;
+}
+
+    .divButton button {
+        width: 24%;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid green;
+        outline: none;
+        cursor: pointer;
+       color:chocolate;
+        font-size: 20px;
+        font-weight: 600;
+        background-color:lightgoldenrodyellow;
+        font-family: 'EB Garamond', serif;
+    }
+
+.detailsAdmin {
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.inputTagname {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'EB Garamond', serif;
+    color:olive;
+}
+
+.DetailsofWebsite {
+    width: 20%;
+    background-color: rgb(54, 113, 113);
+    border-radius: 10%;
+    text-align: center;
+}
+
+.inputFullname {
+}
+
+.validateNameError, .validateEmailError, .validateMobileError, .validateMessageError {
+    color: rgb(207, 55, 55);
+    font-size: 20px;
+    font-weight: 600;
+}
+.contact-us-div{
+    width:100%;
+    height:200px;
+
+}
+.inputFullname, #inputEmail, #inputmob, #inputMessage {
+    background-color: lightgrey;
+    color: black;
+}
+.address-location-number-div{
+    width:30%;
+    height:auto;
+    background-color:lightskyblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-div-half1{
+    background-color:lightblue;
+    height:100vh;
+}
+.main-div-half2 {
+    background-color: lightskyblue;
+    height:100vh;
+}
+.first-parent-div {
+    position: relative;
+}
+.second-parent-div {
+    position: absolute;
+    top: 150px;
+    left: 300px;
+    height: auto;
+}
+.contact-form-details {
+    position: relative;
+    height:500px;
+    width:800px;
+
+}
+.message-div{
+    position:absolute;
+    left:300px;
+}
+.last-session{
+    height:auto;
+    background-color:olive;
+    position:absolute;
+   top:200px;
+   left:210px;
+}
