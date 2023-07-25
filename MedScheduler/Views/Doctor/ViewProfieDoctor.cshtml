@@ -1,0 +1,268 @@
+﻿@model MedScheduler.Models.DoctorSignUp
+
+@{
+    ViewBag.Title = "ViewProfieDoctor";
+    Layout = "~/Views/Shared/_DoctorLayoutPage.cshtml";
+}
+<link href="~/Content/Stylesheet/Patientscontoller.css" rel="stylesheet" />
+<link href="~/Content/Stylesheet/DoctorController.css" rel="stylesheet" />
+<h2 class="text-center text-danger">Profile details</h2>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+@if (TempData["DPasswordUpdateSuccessMessage"] != null)
+{
+    <div class="alert alert-danger d-flex justify-content-between">
+        <strong>Information:  @TempData["DPasswordUpdateSuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["DPasswordUpdateSuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["DPasswordUpdateSuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["DoctorUpdationSuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["DoctorUpdationSuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["DPasswordUpdateErrorMessage"] != null)
+{
+    <div class="alert alert-danger d-flex justify-content-between">
+        <strong>Error:@TempData["DPasswordUpdateErrorMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+
+
+
+
+<div>
+    <h4></h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-4 doctor-view-option-left">
+            <dl class="dl-horizontal">
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Firstname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Firstname)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Lastname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Lastname)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Age)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Age)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Gender)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Phonenumber)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Phonenumber)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Workspace)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Workspace)
+                </dd>
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Specialisation)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Specialisation)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Experience)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Experience) years
+                </dd>
+
+            </dl>
+            <p>
+                <button class="bg-primary border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">Change password</button>
+
+                <button class="btn btn-info text-decoration-none text-dark fw-bold m-2">
+                    @Html.ActionLink("Appointment list", "Getappointmentdetails", "Doctor", new { id = Model.Id }, new { @class = "nav-link" })
+                </button>
+            </p>
+        </div>
+        <div class="col-4">
+            <img class="w-75 h-75" src="@Url.Content(Model.Profilephoto)" />
+
+        </div>
+        <div class="col-4 doctor-view-option-left">
+            <dl>
+
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Username)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Username)
+                </dd>
+
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Monday)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Monday)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Tuesday)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tuesday)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Wednesday)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Wednesday)
+                </dd>
+
+
+
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Thursday)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Thursday)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Friday)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Friday)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Saturday)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Saturday)
+                </dd>
+
+                <dt class="fs-4 fw-bolder">
+                    @Html.DisplayNameFor(model => model.Sunday)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Sunday)
+                </dd>
+
+            </dl>
+            <p>
+
+
+                <button class="btn btn-warning text-decoration-none text-dark fw-bold">
+
+
+                    @Html.ActionLink("Edit", "Edit", "Doctor", new { id = Model.Id }, new { @class = "nav-link" })
+                </button>
+
+                <button class="btn btn-danger text-decoration-none text-dark fw-bold">
+
+                    @Html.ActionLink("Delete", "Delete", "Doctor", new { id = Model.Id }, new { @class = "nav-link" })
+                </button>
+
+                <button class="btn btn-info text-decoration-none text-dark fw-bold">
+                    @Html.ActionLink("Back", "Index", new { @class = "nav-link" })
+                </button>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    @*model *@
+
+    @*model *@
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="@Url.Action("Changepassword", "Doctor")">
+                        <div></div>
+                        <label class="fs-5 fw-bolder">Username</label>
+                        <input id="Username" placeholder="Username" class="form-control" name="Username" onfocusout="UsernamechangePassword()" />
+                        <div id="username-error" class="text-danger fs-5 fw-bolder"></div>
+                        <label class="fs-5 fw-bolder">Password</label>
+                        <input id="Password" placeholder="Password" type="password" class="form-control" name="Password" onfocusout="PasswordchangePassword()" />
+                        <div id="password-error" class="text-danger fs-5 fw-bolder"></div>
+                        <label class="fs-5 fw-bolder">New password</label>
+                        <input id="changePassword" placeholder="New password" type="password" class="form-control" name="New_password" onfocusout="NewPasswordchangePassword()" />
+                        <div id="cpassword-error" class="text-danger fs-5 fw-bolder"></div>
+                        <button class="btn btn-info text-decoration-none text-dark fw-bold" id="button">
+                            Save changes
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="~/Scripts/Javascript/DoctorController.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

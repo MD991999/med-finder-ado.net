@@ -1,0 +1,22 @@
+﻿body {
+}
+
+.displaydetails {
+    position: absolute;
+    top: 57px;
+    right: -400px; /* Off-screen position */
+    width: 400px;
+    height: 100%;
+    background-color: #fff;
+    transition: right 0.3s ease-in-out;
+}
+.displaydetailsClick {
+    right: 0;
+}
+
+.smallshown{
+    display:block;
+}
+.smallhidden{
+    display:hidden;
+}

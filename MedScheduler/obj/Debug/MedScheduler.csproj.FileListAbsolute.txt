@@ -77,3 +77,7 @@ C:\Users\hp\Desktop\asp.net final project\MedScheduler\MedScheduler\obj\Debug\Me
 C:\Users\hp\Desktop\asp.net final project\MedScheduler\MedScheduler\obj\Debug\MedScheduler.csproj.CopyComplete
 C:\Users\hp\Desktop\asp.net final project\MedScheduler\MedScheduler\obj\Debug\MedScheduler.dll
 C:\Users\hp\Desktop\asp.net final project\MedScheduler\MedScheduler\obj\Debug\MedScheduler.pdb
+C:\Users\hp\Desktop\asp.net final project\MedScheduler\MedScheduler\bin\EntityFramework.dll
+C:\Users\hp\Desktop\asp.net final project\MedScheduler\MedScheduler\bin\EntityFramework.SqlServer.dll
+C:\Users\hp\Desktop\asp.net final project\MedScheduler\MedScheduler\bin\EntityFramework.xml
+C:\Users\hp\Desktop\asp.net final project\MedScheduler\MedScheduler\bin\EntityFramework.SqlServer.xml

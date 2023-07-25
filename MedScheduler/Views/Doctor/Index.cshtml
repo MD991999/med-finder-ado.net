@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    @* Layout = "~/Views/Shared/_LayoutPage2.cshtml";*@
+
+    Layout = "~/Views/Shared/_DoctorLayoutPage.cshtml";
+
+}
+
+<link href="~/Content/Stylesheet/DoctorController.css" rel="stylesheet" />
+
+<div class="">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger d-flex justify-content-between">
+            <strong>Information:  @TempData["ErrorMessage"] </strong>
+            <button type="button" class="buttondiv btn-close" aria-label="Close" data-dismiss="alert"></button>
+        </div>
+    }
+    else if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success d-flex justify-content-between">
+            <strong>Success:@TempData["SuccessMessage"] </strong>
+            <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+        </div>
+    }
+    @if (Session["username"] != null)
+    {
+    }
+    <div class="row p-5 ">
+        <div class="col-3"> </div>
+        <div class="col-6 doctor-profile-option">
+            <img class="w-75 h-75" src="~/Content/Pictures/profile-doctor.jpg" />
+            <div class="d-flex justify-content-center m-1"><a href="@Url.Action("ViewProfieDoctor","Doctor")" class="nav-link bg-success w-25 text-center">View profile</a></div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+

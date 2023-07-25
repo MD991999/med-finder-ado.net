@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_DoctorLayoutPage.cshtml";
+}
+<script src="~/Scripts/Javascript/DoctorController.js"></script>
+<link href="~/Content/Stylesheet/DoctorController.css" rel="stylesheet" />
+
+@using MedScheduler.Models;
+@model DoctorSignUp
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div>@TempData["ErrorMessage"]</div>
+}
+else
+{
+    <div>@TempData["SuccessMessage"]</div>
+
+}
+
+
+
+<!-- Your HTML code -->
+<div class="row d-flex flex-row justify-content-between">
+    <div class="w-25 h-100 bg-danger fs-2 fw-bolder">New appointments</div>
+    <div class="w-25 h-100 bg-danger fs-2 fw-bolder">Old appointments</div>
+    @*<div class="w-25 h-100 bg-danger fs-2 fw-bolder">@Html.ActionLink("Appointment slot", "Details", "Doctor", new { id = @Model.Id }, new { @class = "nav-link" })</div>*@
+</div>
+
+
+<div id="displayDetails" class="displaydetails">
+    @* <h5 class="text-center">@Model.Id</h5>*@
+    <h5 class="text-center">@Model.Id</h5>
+
+    <h5 class="text-center"><img class="w-25 h-25" src="@Model.Profilephoto" /></h5>
+    <h5><strong class="text-danger">Name:</strong>@Model.Firstname @Model.Lastname</h5>
+    <h5><strong class="text-danger">Age:</strong>@Model.Age</h5>
+    <h5><strong class="text-danger">Gender:</strong>@Model.Gender</h5>
+    <h5><strong class="text-danger">Phonenumber: </strong>@Model.Phonenumber</h5>
+    <h5><strong class="text-danger">Email:</strong> @Model.Email</h5>
+    <h5><strong class="text-danger">Workspace:</strong> @Model.Workspace</h5>
+    <h5><strong class="text-danger">Specialisation:</strong> @Model.Specialisation</h5>
+    <h5><strong class="text-danger">Experiance:</strong> @Model.Experience</h5>
+    <h5><strong class="text-danger">Username:</strong> @Model.Username</h5>
+    <h5><strong class="text-danger">Password:</strong> @Model.Password</h5>
+
+    @*<button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+    *@
+    <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="bg-primary w-25 fs-5 fw-bold text-center">@Html.ActionLink("View appointments", "Getappointmentdetails", "Doctor", new { id = @Model.Id }, new { @class = "nav-link" })</div>
+        <div class="bg-primary w-25 fs-5 fw-bold text-center">@Html.ActionLink("Edit", "Edit", "Doctor", new { id = @Model.Id }, new { @class = "nav-link" })</div>
+        <div class="bg-danger w-25 fs-5 fw-bold text-center">@Html.ActionLink("Delete", "Delete", "Doctor", new { id = @Model.Id }, new { @class = "nav-link" })</div>
+    </div>
+
+</div>
+
+

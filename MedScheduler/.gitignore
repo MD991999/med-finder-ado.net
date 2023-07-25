@@ -1,0 +1,22 @@
+﻿# Build output
+bin/
+obj/
+
+# NuGet packages
+*.nupkg
+
+
+
+# Temporary files and logs
+logs/
+*.log
+*.tmp
+
+# User-specific settings (change the username)
+/app_data/*.mdf
+/app_data/*.ldf
+*.user
+
+# Miscellaneous
+*.DS_Store
+Thumbs.db

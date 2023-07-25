@@ -1,7 +1,56 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_HomePageLayout.cshtml";
+
 }
-<link href="~/Content/Index.css" rel="stylesheet" />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+@if (TempData["PatientSignupErrorMessage"] != null)
+{
+    <div class="alert alert-danger d-flex justify-content-between">
+        <strong>Information:  @TempData["PatientSignupErrorMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["PatientSignupSuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["PatientSignupSuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["AddConcernSuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["AddConcernSuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["AddConcernErrorMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["AddConcernErrorMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["ErrorMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["SuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+
+<link href="~/Content/Stylesheet/Index.css" rel="stylesheet" />
 
 <main class="p-5">
     <div class="container d-flex flex-row justify-content-evenly">
@@ -29,6 +78,7 @@
 
             </div>
         </div>
+        @* *@
         <div class="index-di">
             <img class="index-image" src="https://img.freepik.com/premium-photo/healthcare-medicine-concept-young-team-group-doctors_380164-54023.jpg" />
         </div>

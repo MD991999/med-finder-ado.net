@@ -1,0 +1,15 @@
+﻿body {
+    font-family: 'EB Garamond', serif;
+}
+.footer-heading{
+    color:olivedrab;
+    font-weight:600;
+
+}
+.logo-website {
+    width: 5%;
+   
+}
+.navbarDiv {
+    position: fixed;
+}

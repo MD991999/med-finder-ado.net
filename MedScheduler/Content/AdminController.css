@@ -1,0 +1,10 @@
+﻿body {
+}
+.full-width-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+    .full-width-table td {
+        word-wrap: break-word;
+    }

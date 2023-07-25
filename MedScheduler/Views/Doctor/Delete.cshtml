@@ -1,0 +1,121 @@
+﻿@model MedScheduler.Models.DoctorSignUp
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_DoctorLayoutPage.cshtml";
+}
+
+@*@if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger d-flex justify-content-between">
+            <strong>Information:  @TempData["ErrorMessage"] </strong>
+            <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+        </div>
+    }
+    else if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success d-flex justify-content-between">
+            <strong>Success:@TempData["SuccessMessage"] </strong>
+            <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+        </div>
+    }*@
+<link href="~/Content/Stylesheet/DoctorDelete.css" rel="stylesheet" />
+<h3>Are you sure you want to delete this?</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex flex-row bg-dark bg-opacity-25 p-3">
+                <div class=" d-flex flex-column">
+                    <div> <img class="w-75 h-100" src="@Url.Content(Model.Profilephoto)" /></div>
+                    <div>
+                        <div class="d-flex flex-column ">
+
+                            <div class="fs-5 fw-bold text-danger">
+                                @Html.DisplayFor(model => model.Firstname)   @Html.DisplayFor(model => model.Lastname)
+                            </div>
+
+                            <div class="fs-5 fw-bold text-danger">
+                                @Html.DisplayFor(model => model.Email)
+                            </div>
+                            <div class="fs-5 fw-bold text-danger">
+                                @Html.DisplayFor(model => model.Phonenumber)
+                            </div>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                    @Html.ActionLink("Back ", "ViewProfieDoctor")
+                                </div>
+                            }
+                        </div>
+                    </div>
+            </div>
+               
+              
+                <div class="">
+                    <div class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Age)
+                    </div>
+
+                    <div class="fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Age)
+                    </div>
+
+                    <dt class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </dt>
+
+                    <dd class="fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Gender)
+                    </dd>
+
+
+
+                    <dt class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Workspace)
+                    </dt>
+
+                    <dd class=" fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Workspace)
+                    </dd>
+
+                    <dt class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Specialisation)
+                    </dt>
+
+                    <dd class="fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Specialisation)
+                    </dd>
+
+                    <dt class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Experience)
+                    </dt>
+
+                    <dd class=" fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Experience) Years
+                    </dd>
+
+                    <dt class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Username)
+                    </dt>
+
+                    <dd class="fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Username)
+                    </dd>
+                </div>
+           
+            </div>
+
+          
+        </div>
+        <div class="col-3"></div>
+
+    </dl>
+  
+</div>
+

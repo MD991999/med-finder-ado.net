@@ -1,0 +1,256 @@
+﻿<!-- Your view content here -->
+@*@model MedScheduler.Models.PatientSignUp*@
+@using MedScheduler.Models
+@using System.Web
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PatientLayoutPage.cshtml";
+}
+<link href="~/Content/Stylesheet/IndexPatient.css" rel="stylesheet" />
+<link href="~/Content/Stylesheet/Patientscontoller.css" rel="stylesheet" />
+<script src="~/Scripts/Javascript/DoctorController.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+@*<script src="~/Scripts/patientcontroller.js"></script>
+
+
+*@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger d-flex justify-content-between">
+        <strong>Information:  @TempData["ErrorMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["SuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+ else if (TempData["ChangePasswordError"] != null)
+{
+    <div class="alert alert-danger d-flex justify-content-between">
+        <strong>Information:  @TempData["ChangePasswordError"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+
+@if (Session["username"] != null)
+{
+    // <h4 class="text-danger fs-5 fw-bold">Welcome @Session["username"].ToString();</h4>
+}
+
+@{
+    var doctorsList = (List<DoctorSignUp>)Session["DoctorsList"]; // Retrieve doctorsList from session
+                                                                  //the session stores objects in a generic Object type.                                 //The code snippet you provided retrieves the value stored in the session with the key "DoctorsList" and casts it to a List<DoctorSignUp> type, assigning it to the variable doctorsList.
+}
+
+
+
+
+
+@if (doctorsList != null)
+{
+    <div class="container card-deck row w-100">
+        @foreach (var doctor in doctorsList)
+        {
+            <div class=" col-md-6 ">
+                <div class="card  h-auto p-1 mb-4">
+                    <div class="row doctor-card">
+                        <div class="col-md-5 text-align-center">
+                            @if (!string.IsNullOrEmpty(doctor.Profilephoto))
+                            {
+                                <!-- If Profilephoto is not null or empty, use the URL provided in the model -->
+                                <img class="doctor-image card-img-top w-100 h-50 m-2" src="@Url.Content(doctor.Profilephoto)" alt="User Profile Photo" />
+                            }
+                            else
+                            {
+                                <!-- If Profilephoto is null or empty, show a default image using a relative path -->
+                                <img class="doctor-image card-img-top w-100 h-50 m-2" src="~/Content/Pictures/icon.jpg" alt="Default Profile Photo" />
+                            }
+                            @* <img src="@Url.Content(doctor.Profilephoto)" class="doctor-image card-img-top w-100 h-50 m-2" alt="...">*@
+                            <h5 class="card-title"><strong class="fw-bolder text-danger">Name:</strong> <span class="fw-bold">@doctor.Firstname @doctor.Lastname</span></h5>
+                            <h5 class="card-title"><strong class="fw-bolder text-danger">Specialization:</strong><span class="fw-bold"> @doctor.Specialisation</span></h5>
+                            <h5 class="card-title"><strong class="fw-bolder text-danger">Experience:</strong> <span class="fw-bold">@doctor.Experience years</span></h5>
+                            <h5 class="card-title"><strong class="fw-bolder text-danger">Workspace:</strong> <span class="fw-bold">@doctor.Workspace</span></h5>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+
+                                <table class="table">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th>Days</th>
+                                            <th>Time alloted</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-secondary">
+                                            <th>Monday</th>
+                                            <td class="text-primary fw-bold">@doctor.Monday</td>
+                                        </tr>
+                                        <tr class="table-success">
+                                            <th>Tuesday</th>
+                                            <td class="text-primary fw-bold">@doctor.Tuesday</td>
+                                        </tr>
+                                        <tr class="table-danger">
+                                            <th>Wednesday</th>
+                                            <td class="text-primary fw-bold">@doctor.Wednesday</td>
+                                        </tr>
+                                        <tr class="table-info">
+                                            <th>Thursday</th>
+                                            <td class="text-primary fw-bold">@doctor.Thursday</td>
+                                        </tr>
+                                        <tr class="table-light">
+                                            <th>Friday</th>
+                                            <td class="text-primary fw-bold">@doctor.Friday</td>
+                                        </tr>
+                                        <tr class="table-primary">
+                                            <th>Saturday</th>
+                                            <td class="text-primary fw-bold">@doctor.Saturday</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <form method="get" action="@Url.Action("BookingDoctorPatient", "Patient")">
+                                    <input type="hidden" name="Id" value="@doctor.Id">
+                                    <button type="submit" class="bg-success fw-bolder fs-5 border-0">Book a slot</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Display the list of doctors -->
+<!-- Render the Signed-in User Details partial view -->
+<!--<div id="displayDetails" class="displaydetails">
+
+
+    <h5 class="text-center">Model.Id</h5>
+    <h5><strong class="text-danger">Name:</strong>Model.Firstname Model.Lastname</h5>
+    <h5><strong class="text-danger">Age:</strong>Model.Dateofbirth</h5>
+    <h5><strong class="text-danger">Gender:</strong>Model.Gender</h5>
+    <h5><strong class="text-danger">Phonenumber: </strong>Model.Phonenumber</h5>
+    <h5><strong class="text-danger">Email:</strong> Model.Email</h5>
+    <h5><strong class="text-danger">Workspace:</strong> Model.Address</h5>
+    <h5><strong class="text-danger">Specialisation:</strong> Model.State</h5>
+    <h5><strong class="text-danger">Experiance:</strong> Model.City</h5>
+    <h5><strong class="text-danger">Username:</strong> Model.Username</h5>
+    <h5><strong class="text-danger">Password:</strong> Model.Password</h5>
+
+    }
+
+
+
+</div>-->
+@*<button class="btn btn-primary">Edit</button>
+    <button class="btn btn-danger">Delete</button>
+*@
+
+@* <div id="displayDetails" class="displaydetails">
+        <h5 class="text-center">patient.Id</h5>
+        <h5><strong class="text-danger">Name:</strong>patient.Firstname patient.Lastname</h5>
+        <h5><strong class="text-danger">Age:</strong>patient.Dateofbirth</h5>
+        <h5><strong class="text-danger">Gender:</strong>patient.Gender</h5>
+        <h5><strong class="text-danger">Phonenumber: </strong>patient.Phonenumber</h5>
+        <h5><strong class="text-danger">Email:</strong> patient.Email</h5>
+        <h5><strong class="text-danger">Workspace:</strong> patient.Address</h5>
+        <h5><strong class="text-danger">Specialisation:</strong> patient.State</h5>
+        <h5><strong class="text-danger">Experiance:</strong> patient.City</h5>
+        <h5><strong class="text-danger">Username:</strong> patient.Username</h5>
+        <h5><strong class="text-danger">Password:</strong> patient.Password</h5>
+    </div>*@
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*if (TempData["ErrorMessage"] != null)
+
+    {
+        <div class="alert alert-success d-flex justify-content-between">
+            <strong>Success:@TempData["SuccessMessage"] </strong>
+            <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+        </div>
+    }
+*@

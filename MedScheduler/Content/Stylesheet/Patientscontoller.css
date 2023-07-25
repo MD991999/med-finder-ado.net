@@ -1,0 +1,45 @@
+﻿body {
+    background-image:url("../Pictures/patient-index-bg.jpeg");
+    background-size:cover;
+}
+
+.card {
+    /*opacity:0.2;*/
+}
+
+.displaydetails {
+    position: fixed;
+    top: 57px;
+    right: -400px; 
+width: 400px;
+height: 100%;
+background-color: #fff;
+transition: right 0.3s ease-in-out;
+}
+
+.displaydetailsClick {
+    right: 0;
+}
+
+.additional-details {
+    background-color: lightsteelblue;
+}
+.doctor-card{
+    height:500px;
+}
+.doctor-image{
+    object-fit:cover;
+}
+
+.view-profile-left, .view-profile-right {
+    background-color: lightblue;
+    height: 400px;
+}
+
+.profile-details{
+font-size:20px;
+font-weight:bolder;
+}
+.profile-details-value{
+    font-size:18px;
+}

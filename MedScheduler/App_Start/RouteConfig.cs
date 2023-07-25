@@ -12,6 +12,11 @@ namespace MedScheduler
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+        /*    routes.MapRoute(
+  name: "DoctorDetails",
+  url: "Doctor/Details/{username}",
+  defaults: new { controller = "Doctor", action = "Details" }
+);   */
 
             routes.MapRoute(
                 name: "Default",

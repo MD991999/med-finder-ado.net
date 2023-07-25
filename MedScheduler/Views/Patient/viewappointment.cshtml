@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MedScheduler.Models.SlotBooking>
+@{
+    ViewBag.Title = "viewappointment";
+    Layout = "~/Views/Shared/_PatientLayoutPage.cshtml";
+}
+@if (TempData["ErrorMessage"] != null)
+            {
+                <div class="text-danger">@TempData["ErrorMessage"]</div>
+            }
+<div class="d-flex flex-row justify-content-between w-100 m-5" >
+   <div><h1 class="text-danger fs-1 fw-bold">Appointment list</h1></div> 
+   <div>
+       <button class="btn  btn-warning">
+           @Html.ActionLink("Create new", "Index", "Patient", new { @class = "nav-link fs-5" })
+       </button>
+   </div>
+</div>
+<table class="table table-success table-striped-columns">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentId)
+        </th>
+        <th class="w-25">
+            @Html.DisplayNameFor(model => model.Doctorname)
+        </th>
+        <th class="w-25">
+            @Html.DisplayNameFor(model => model.Specialisation)
+        </th>
+        <th class="w-25">
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+
+        <th class="w-50">
+            @Html.DisplayNameFor(model => model.Date_of_appointment)
+        </th>
+        <th class="w-50">
+            @Html.DisplayNameFor(model => model.Time_of_appointment)
+        </th>
+        <th></th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppointmentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doctorname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Specialisation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_of_appointment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_of_appointment)
+        </td>
+        <td>
+            <button class="text-success border-0 m-2">
+                @Html.ActionLink("Edit", "Editappointment1", "Patient", new { id = item.AppointmentId }, new { @class = "nav-link" })
+            </button>
+            <button class="text-danger border-0 m-2">
+                @Html.ActionLink("Delete", "Deleteappointment", "Patient", new { id = item.AppointmentId }, new { @class = "nav-link" })
+            </button>
+        </td>
+    </tr>
+}
+</table>

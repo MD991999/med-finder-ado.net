@@ -1,0 +1,16 @@
+﻿body {
+    background-image:url("../Pictures/signin-image.jpeg");
+    background-size:cover;
+
+}
+
+.signin-form{
+   background-color:transparent;
+   border:1px solid;
+   border-color:darkmagenta;
+  height:350px;
+  width:100%;
+}
+.signin-input {
+
+}

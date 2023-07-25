@@ -1,0 +1,90 @@
+﻿@using MedScheduler.Models;
+
+@model MedScheduler.Models.Signin
+
+@{
+    ViewBag.Title = "Signin";
+    Layout = "~/Views/Shared/_HomePageLayout.cshtml";
+}
+<link href="~/Content/Stylesheet/Signin.css" rel="stylesheet" />
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger d-flex justify-content-between">
+        <strong>Information:  @TempData["ErrorMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["SuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal d-flex justify-content-center align-items-center flex-column">
+        <h4 class="text-danger fs-3 fw-bolder">Sign in</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row w-50 border-1 border-danger">
+            <div class="col-3"></div>
+            <div class="col-6 w-50 signin-form ">
+                <div class="form-group  ">
+                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2 fs-5 fw-bold" })
+                    <div class="col-md-10  w-100  signin-input">
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2 fs-5 fw-bold" })
+                    <div class="col-md-10  w-100">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Identity_verification, htmlAttributes: new { @class = "control-label  fs-5 fw-bold" })
+                    <div class="col-md-10  w-100">
+                        @Html.EditorFor(model => model.Identity_verification, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.ValidationMessageFor(model => model.Identity_verification, "", new { @class = "text-danger" })
+                        <p class="fs-5 text-danger">Only for admin</p>
+                    </div>
+                </div>
+                <div class="form-group d-flex justify-content-evenly align-items-center m-4">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a href="@Url.Action("Index", "Patient")" class="d-flex  text-decoration-none">
+                            <input type="submit" value="Sign in" class="btn btn-danger fs-5" />
+                        </a>
+                    </div>
+                    <div class="border-1 border-secondary fs-4 fw-bold">
+                        @Html.ActionLink("Back ", "Index")
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+
+
+
+    </div>
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval");
+
+
+}

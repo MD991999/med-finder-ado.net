@@ -1,0 +1,220 @@
+﻿@*@using MedScheduler.Models;
+    @model DoctorsPatientsModel;
+
+
+
+    <h2>Index</h2>
+    @foreach (var doctor in Model.DoctorSignUp)
+    {
+        <h1>@doctor.Firstname </h1>
+    }
+    @foreach (var patient in Model.PatientSignUp)
+    {
+        <h1>@patient.Firstname </h1>
+    }*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using MedScheduler.Models;
+@model DoctorsPatientsModel
+
+
+<link href="~/Content/AdminController.css" rel="stylesheet" />
+
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger d-flex justify-content-between">
+        <strong>Information:  @TempData["ErrorMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["SuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["DeleteMessagelistErrorMessage"] != null)
+{
+    <div class="alert alert-danger d-flex justify-content-between">
+        <strong>Success:@TempData["DeleteMessagelistErrorMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["AddadminSuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Information:  @TempData["AddadminSuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["AdminChangePasswordErrorMessage"] != null)
+{
+    <div class="alert alert-danger d-flex justify-content-between">
+        <strong>Information:  @TempData["AdminChangePasswordErrorMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+<div class="d-flex justify-content-end">
+    <button class="bg-primary border-0 fs-4 fw-bolder " data-bs-toggle="modal" data-bs-target="#exampleModal">Change password</button>
+</div>
+<h2 class="fs-1 fw-bolder text-danger  m-5 text-center">Doctors list</h2>
+
+<table class="full-width-table  table table-dark table-striped">
+    <thead>
+        <tr>
+            <th class="text-secondary">Profile photo</th>
+            <th class="text-secondary">Name</th>
+            <th class="text-secondary">Contact</th>
+            <th class="text-secondary">Specialization</th>
+
+            <th class="text-secondary">Time slot</th>
+            <th class="w-25"></th>
+            <!-- Add more columns as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model.DoctorSignUp)
+        {
+            <tr>
+                <td class="text-secondary"><img class="w-100 h-100" src="@Url.Content(doctor.Profilephoto)" /></td>
+                <td class="text-secondary">@doctor.Firstname @doctor.Lastname</td>
+                <td class="text-secondary">
+                    <div>@doctor.Workspace</div>
+                    <div>@doctor.Email</div>
+                    <div>@doctor.Phonenumber</div>
+                </td>
+                <td class="text-secondary">@doctor.Specialisation</td>
+                <td class="text-secondary">
+                    <div class="w-100 m-1"><strong class="text-secondary">Monday</strong>@doctor.Monday</div>
+                    <div class="w-100 m-1"><strong class="text-secondary">Tuesday</strong>@doctor.Tuesday</div>
+                    <div class="w-100 m-1"><strong class="text-secondary">Wednesday</strong>@doctor.Wednesday</div>
+                    <div class="w-100 m-1"><strong class="text-secondary">Thursday</strong>@doctor.Thursday</div>
+                    <div class="w-100 m-1"><strong class="text-secondary">Friday</strong>@doctor.Friday</div>
+                    <div class="w-100 m-1"><strong class="text-secondary">Saturday</strong>@doctor.Saturday</div>
+                    <div class="w-100 m-1"><strong class="text-secondary">Sunday</strong>@doctor.Sunday</div>
+                </td>
+                <td>
+                    <a href="@Url.Action("Deletedoctor", "Admin", new {id=doctor.Id})" type="button" class="btn btn-danger w-25">Delete</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<h2 class="fs-1 fw-bolder text-danger  m-5 text-center">Patients list</h2>
+
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th class="text-secondary"> Name</th>
+
+
+
+            <th class="text-secondary">Contact</th>
+            <th class="text-secondary">Address</th>
+            <th class="text-secondary">State</th>
+            <th class="text-secondary">City</th>
+            <th></th>
+            <!-- Add more columns as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model.patientSignUp)
+        {
+            <tr>
+                <td class="text-secondary">@patient.Firstname @patient.Lastname</td>
+
+
+
+                <td class="text-secondary">
+                    <div> @patient.Email </div>
+                    <div>@patient.Phonenumber</div>
+                </td>
+                <td class="text-secondary">@patient.Address </td>
+                <td class="text-secondary">@patient.State </td>
+                <td class="text-secondary">@patient.City </td>
+
+                <td class="text-secondary">
+                    <a href="@Url.Action("DeletePatient", "Admin", new { id=patient.Id })" type="button" class="btn btn-danger w-100">Delete</a>
+                </td>
+
+                <!-- Add more cells as needed -->
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+<h2 class="fs-1 fw-bolder text-danger  m-5 text-center">Admin</h2>
+
+<table class="full-width-table  table table-dark table-striped">
+    <thead>
+        <tr>
+
+            <th class="text-secondary">Name</th>
+            <th class="text-secondary">Job role</th>
+            <!-- Add more columns as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var admin in Model.adminmodel)
+        {
+            <tr>
+
+                <td class="text-secondary">@admin.Adminname</td>
+                <td class="text-secondary">@admin.Jobrole</td>
+
+                @* <td>
+            <a href="@Url.Action("EditAdmin", "Admin", new {id=admin.Id})" type="button" class="btn btn-danger w-25">Edit</a>
+                    </td>
+                     <td>
+                    <a href="@Url.Action("AdminDelete", "Admin", new {id=admin.Id})" type="button" class="btn btn-danger w-25">Delete</a>
+                    </td>
+                    *@
+                <!-- Add more cells as needed -->
+            </tr>
+        }
+    </tbody>
+</table>
+@*model *@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="@Url.Action("Changepassword", "Admin")">
+                    <div></div>
+                    <label class="fs-5 fw-bolder">Username</label>
+                    <input id="Username" placeholder="Username" class="form-control" name="Username" onfocusout="UsernamechangePassword()" />
+                    <div id="username-error" class="text-danger fs-5 fw-bolder"></div>
+                    <label class="fs-5 fw-bolder">Password</label>
+                    <input id="Password" type="password" placeholder="Password" class="form-control" name="Password" onfocusout="PasswordchangePassword()" />
+                    <div id="password-error" class="text-danger fs-5 fw-bolder"></div>
+
+                    <label class="fs-5 fw-bolder">Identity verification</label>
+                    <input id="Identityverification" type="password" placeholder="Key" class="form-control" name="Verification_key" onfocusout="VerificationkeychangePassword()" />
+                    <div id="verification-error" class="text-danger fs-5 fw-bolder"></div>
+
+                    <label class="fs-5 fw-bolder">New password</label>
+                    <input id="changePassword" type="password" placeholder="New password" class="form-control" name="New_password" onfocusout="NewPasswordchangePassword()" />
+                    <div id="cpassword-error" class="text-danger fs-5 fw-bolder"></div>
+                    <button class="btn btn-info text-decoration-none text-dark fw-bold" id="button">
+                        Save changes
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/Javascript/Admincontroller.js"></script>

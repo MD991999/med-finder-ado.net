@@ -1,0 +1,244 @@
+﻿
+@model MedScheduler.Models.DoctorSignUp
+
+@{
+    ViewBag.Title = "DeleteConfirmation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="row ">
+            <div class="col-2"></div>
+            <div class="col-5 d-flex flex-row bg-dark bg-opacity-25 p-3">
+                <div class=" d-flex flex-column">
+                    <div> <img class="w-75 h-100" src="@Url.Content(Model.Profilephoto)" /></div>
+                    <div>
+                        <div class="d-flex flex-column ">
+
+                            <div class="fs-5 fw-bold text-danger">
+                                @Html.DisplayFor(model => model.Firstname)   @Html.DisplayFor(model => model.Lastname)
+                            </div>
+
+                            <div class="fs-5 fw-bold text-danger">
+                                @Html.DisplayFor(model => model.Email)
+                            </div>
+                            <div class="fs-5 fw-bold text-danger">
+                                @Html.DisplayFor(model => model.Phonenumber)
+                            </div>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                    @Html.ActionLink("Back ", "Index")
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="">
+                    <div class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Age)
+                    </div>
+
+                    <div class="fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Age)
+                    </div>
+
+                    <dt class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </dt>
+
+                    <dd class="fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Gender)
+                    </dd>
+
+
+
+                    <dt class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Workspace)
+                    </dt>
+
+                    <dd class=" fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Workspace)
+                    </dd>
+
+                    <dt class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Specialisation)
+                    </dt>
+
+                    <dd class="fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Specialisation)
+                    </dd>
+
+                    <dt class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Experience)
+                    </dt>
+
+                    <dd class=" fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Experience) Years
+                    </dd>
+
+                    <dt class="fs-5 fw-bolder text-primary">
+                        @Html.DisplayNameFor(model => model.Username)
+                    </dt>
+
+                    <dd class="fs-5 fw-bold">
+                        @Html.DisplayFor(model => model.Username)
+                    </dd>
+                </div>
+
+
+            </div>
+            <div class="col-3">
+                <div class="d-flex ">
+                    <table class="table border-1">
+                        <thead>
+                            <tr>
+                                <th>Days</th>
+                                <th>Time slot</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> <label class="fs-5 fw-bold m-1">Monday</label></td>
+                                <td class="bg-primary">
+                                    <select id="Monday" name="Monday">
+                                        <option value="10:00am-12:00pm" @(Model.Monday == "10:00am-12:00pm" ? "selected" : "disabled")>10:00am-12:00pm</option>
+                                        <option value="13:00pm-16:00pm" @(Model.Monday == "13:00pm-16:00pm" ? "selected" : "disabled")>13:00pm-16:00pm</option>
+                                        <option value="18:00pm-22:00pm" @(Model.Monday == "18:00pm-22:00pm" ? "selected" : "disabled")>18:00pm-22:00pm</option>
+                                        <option value="00:00am-04:00am" @(Model.Monday == "00:00am-04:00am" ? "selected" : "disabled")>00:00am-04:00am</option>
+                                        <option value="06:00am-09:00am" @(Model.Monday == "06:00am-09:00am" ? "selected" : "disabled")>06:00am-09:00am</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Monday, "", new { @class = "text-danger fs-5 " })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>  <label class="fs-5 fw-bold m-1">Tuesday</label></td>
+                                <td class="bg-primary">
+                                    <select id="Tuesday" name="Tuesday">
+                                        <option value="10:00am-12:00pm" @(Model.Tuesday == "10:00am-12:00pm" ? "selected" : "disabled")>10:00am-12:00pm</option>
+                                        <option value="13:00pm-16:00pm" @(Model.Tuesday == "13:00pm-16:00pm" ? "selected" : "disabled")>13:00pm-16:00pm</option>
+                                        <option value="18:00pm-22:00pm" @(Model.Tuesday == "18:00pm-22:00pm" ? "selected" : "disabled")>18:00pm-22:00pm</option>
+                                        <option value="00:00am-04:00am" @(Model.Tuesday == "00:00am-04:00am" ? "selected" : "disabled")>00:00am-04:00am</option>
+                                        <option value="06:00am-09:00am" @(Model.Tuesday == "06:00am-09:00am" ? "selected" : "disabled")>06:00am-09:00am</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Tuesday, "", new { @class = "text-danger fs-5 " })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="fs-5 fw-bold m-1">Wednesday</label>
+                                </td>
+                                <td class="bg-primary">
+
+                                    <select id="Wednesday" name="Wednesday">
+                                        <option value="10:00am-12:00pm" @(Model.Wednesday == "10:00am-12:00pm" ? "selected" : "disabled")>10:00am-12:00pm</option>
+                                        <option value="13:00pm-16:00pm" @(Model.Wednesday == "13:00pm-16:00pm" ? "selected" : "disabled")>13:00pm-16:00pm</option>
+                                        <option value="18:00pm-22:00pm" @(Model.Wednesday == "18:00pm-22:00pm" ? "selected" : "disabled")>18:00pm-22:00pm</option>
+                                        <option value="00:00am-04:00am" @(Model.Wednesday == "00:00am-04:00am" ? "selected" : "disabled")>00:00am-04:00am</option>
+                                        <option value="06:00am-09:00am" @(Model.Wednesday == "06:00am-09:00am" ? "selected" : "disabled")>06:00am-09:00am</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Wednesday, "", new { @class = "text-danger fs-5 " })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>  <label class="fs-5 fw-bold m-1">Thursday</label></td>
+                                <td class="bg-primary">
+                                    <select id="Thursday" name="Thursday">
+                                        <option value="10:00am-12:00pm" @(Model.Thursday == "10:00am-12:00pm" ? "selected" : "disabled")>10:00am-12:00pm</option>
+                                        <option value="13:00pm-16:00pm" @(Model.Thursday == "13:00pm-16:00pm" ? "selected" : "disabled")>13:00pm-16:00pm</option>
+                                        <option value="18:00pm-22:00pm" @(Model.Thursday == "18:00pm-22:00pm" ? "selected" : "disabled")>18:00pm-22:00pm</option>
+                                        <option value="00:00am-04:00am" @(Model.Thursday == "00:00am-04:00am" ? "selected" : "disabled")>00:00am-04:00am</option>
+                                        <option value="06:00am-09:00am" @(Model.Thursday == "06:00am-09:00am" ? "selected" : "disabled")>06:00am-09:00am</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Thursday, "", new { @class = "text-danger fs-5 " })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <label class="fs-5 fw-bold m-1">Friday</label></td>
+                                <td class="bg-primary">
+                                    <select id="Friday" name="Friday">
+                                        <option value="10:00am-12:00pm" @(Model.Friday == "10:00am-12:00pm" ? "selected" : "disabled")>10:00am-12:00pm</option>
+                                        <option value="13:00pm-16:00pm" @(Model.Friday == "13:00pm-16:00pm" ? "selected" : "disabled")>13:00pm-16:00pm</option>
+                                        <option value="18:00pm-22:00pm" @(Model.Friday == "18:00pm-22:00pm" ? "selected" : "disabled")>18:00pm-22:00pm</option>
+                                        <option value="00:00am-04:00am" @(Model.Friday == "00:00am-04:00am" ? "selected" : "disabled")>00:00am-04:00am</option>
+                                        <option value="06:00am-09:00am" @(Model.Friday == "06:00am-09:00am" ? "selected" : "disabled")>06:00am-09:00am</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Friday, "", new { @class = "text-danger fs-5 " })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>   <label class="fs-5 fw-bold m-1">Saturday</label></td>
+                                <td class="bg-primary">
+                                    <select id="Saturday" name="Saturday">
+                                        <option value="10:00am-12:00pm" @(Model.Saturday == "10:00am-12:00pm" ? "selected" : "disabled")>10:00am-12:00pm</option>
+                                        <option value="13:00pm-16:00pm" @(Model.Saturday == "13:00pm-16:00pm" ? "selected" : "disabled")>13:00pm-16:00pm</option>
+                                        <option value="18:00pm-22:00pm" @(Model.Saturday == "18:00pm-22:00pm" ? "selected" : "disabled")>18:00pm-22:00pm</option>
+                                        <option value="00:00am-04:00am" @(Model.Saturday == "00:00am-04:00am" ? "selected" : "disabled")>00:00am-04:00am</option>
+                                        <option value="06:00am-09:00am" @(Model.Saturday == "06:00am-09:00am" ? "selected" : "disabled")>06:00am-09:00am</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Saturday, "", new { @class = "text-danger fs-5 " })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>   <label class="fs-5 fw-bold m-1">Sunday</label></td>
+                                <td class="bg-primary">
+                                    <select id="Sunday" name="Sunday">
+                                        <option value="10:00am-12:00pm" @(Model.Sunday == "10:00am-12:00pm" ? "selected" : "disabled")>10:00am-12:00pm</option>
+                                        <option value="13:00pm-16:00pm" @(Model.Sunday == "13:00pm-16:00pm" ? "selected" : "disabled")>13:00pm-16:00pm</option>
+                                        <option value="18:00pm-22:00pm" @(Model.Sunday == "18:00pm-22:00pm" ? "selected" : "disabled")>18:00pm-22:00pm</option>
+                                        <option value="00:00am-04:00am" @(Model.Sunday == "00:00am-04:00am" ? "selected" : "disabled")>00:00am-04:00am</option>
+                                        <option value="06:00am-09:00am" @(Model.Sunday == "06:00am-09:00am" ? "selected" : "disabled")>06:00am-09:00am</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Sunday, "", new { @class = "text-danger fs-5 " })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </dl>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

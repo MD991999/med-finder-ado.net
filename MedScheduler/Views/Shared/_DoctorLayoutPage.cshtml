@@ -1,0 +1,114 @@
+﻿@using MedScheduler.Models
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Cormorant+Infant:ital,wght@1,300;1,500&family=EB+Garamond:wght@400;500&family=Eczar:wght@400;500&family=Fredericka+the+Great&family=Labrada&family=Satisfy&display=swap" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Stylesheet/_layout.css" rel="stylesheet" />
+
+    <script src="/Scripts/layout.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="~/Content/Stylesheet/_layout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav class="  navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            <img class="logo-website" src="~/Content/Pictures/logo.jpg" />
+
+            @Html.ActionLink("MedScheduler", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+                @*, new {username = Model.Username }*@
+
+                @if (User.Identity.IsAuthenticated && Session["Role"].ToString() == "Doctor")
+                {
+                    <ul class="navbar-nav d-flex justify-content-between">
+                        <li>@Html.ActionLink("Sign out", "Signout", "Doctor", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                }
+                else
+                {
+                    @Html.ActionLink("Sign in", "Signin", "Home", new { area = "" }, new { @class = "nav-link" })
+
+                }
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container  body-content ">
+        @if (User.Identity.IsAuthenticated && Session["Role"].ToString() == "Doctor")
+        {
+            <h3 class="text-danger fs-4 fw-bolder heading-session">Welcome, @User.Identity.Name!</h3>
+            @RenderBody()
+
+        }
+        else
+        {
+            <p>This is some content visible to anonymous users.</p>
+            <a href="@Url.Action("Signin", "Home")">Sign in</a>
+            <h1>Please login to see more!!!.........</h1>
+        }
+        <hr />
+        <footer>
+            <div class="d-flex flex-column text-center">
+                <h2 class="footer-heading">MedScheduler</h2>
+                <h5>We appreciate your interest. Feel free to contact us for more information or to discuss your needs.</h5>
+                <div class="d-flex flex-row justify-content-center">
+                    <div class="m-2"><i class="fa-brands fa-square-instagram fa-2xl"></i> </div>
+                    <div class="m-2"><i class="fa-brands fa-facebook fa-2xl"></i></div>
+                    <div class="m-2"><i class="fa-brands fa-whatsapp fa-2xl"></i></div>
+                    <div class="m-2"><i class="fa-brands fa-linkedin fa-2xl"></i></div>
+
+                </div>
+                <h5>&copy; @DateTime.Now.Year - MedScheduler</h5>
+
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Javascript/Backbutton.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

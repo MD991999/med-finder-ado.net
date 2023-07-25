@@ -1,0 +1,51 @@
+﻿@*@using MedScheduler.Models
+    @model PatientSignUp
+    @{
+        ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_PatientLayoutPage.cshtml";
+    }
+    <link href="~/Content/Stylesheet/DoctorController.css" rel="stylesheet" />
+    <script src="~/Scripts/Javascript/DoctorController.js"></script>
+
+    <h2>Details</h2>
+    <div id="displayDetails" class="displaydetails">
+        <h5><strong class="text-danger">Name:</strong>@Model.Firstname @Model.Lastname</h5>
+        <h5><strong class="text-danger">Age:</strong>@Model.Dateofbirth</h5>
+        <h5><strong class="text-danger">Gender:</strong>@Model.Gender</h5>
+        <h5><strong class="text-danger">Phonenumber: </strong>@Model.Phonenumber</h5>
+        <h5><strong class="text-danger">Email:</strong> @Model.Email</h5>
+        <h5><strong class="text-danger">Workspace:</strong> @Model.Address</h5>
+        <h5><strong class="text-danger">Specialisation:</strong> @Model.State</h5>
+        <h5><strong class="text-danger">Experiance:</strong> @Model.City</h5>
+        <h5><strong class="text-danger">Username:</strong> @Model.Username</h5>
+        <h5><strong class="text-danger">Password:</strong> @Model.Password</h5>
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <div class="bg-primary w-25 fs-5 fw-bold text-center">@Html.ActionLink("View appointments", "view-appointment", "Patient", new { id = @Model.Id }, new { @class = "nav-link" })</div>
+
+            <div class="bg-primary w-25 fs-5 fw-bold text-center">@Html.ActionLink("Edit", "Edit", "Patient", new { id = @Model.Id }, new { @class = "nav-link" })</div>
+            <div class="bg-danger w-25 fs-5 fw-bold text-center">@Html.ActionLink("Delete", "Delete", "Patient", new { id = @Model.Id }, new { @class = "nav-link" })</div>
+        </div>
+    </div>
+
+
+    @{
+        var doctorDetails = ViewBag.DoctorDetails as List<DoctorSignUp>;
+
+    }
+
+    @if (doctorDetails != null)
+    {
+
+        foreach (var doctor in doctorDetails)
+        {
+            <h4>@doctor.Firstname @doctor.Lastname</h4>
+            <p>@doctor.Age</p>
+            <p>@doctor.Gender</p>
+
+        }
+    }
+
+
+    <div>
+
+    </div>*@

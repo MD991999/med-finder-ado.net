@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>SecurityRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,10 +46,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,14 +129,32 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="DAL\Dal.cs" />
+    <Compile Include="ErrorLogger.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminModel.cs" />
+    <Compile Include="Models\Changepassword.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Doctor-Patient-SlotBooking.cs" />
+    <Compile Include="Models\DoctorSignUp.cs" />
+    <Compile Include="Models\DoctorsPatientsModel.cs" />
+    <Compile Include="Models\PatientIndex.cs" />
+    <Compile Include="Models\PatientSignUp.cs" />
+    <Compile Include="Models\Signin.cs" />
+    <Compile Include="Models\SlotBooking.cs" />
+    <Compile Include="Models\SlotBookingEdit.cs" />
+    <Compile Include="Models\SpecializationDept.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\about.css" />
+    <Content Include="Content\AdminController.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -145,19 +172,61 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\contact.css" />
+    <Content Include="Content\DoctorController.css" />
+    <Content Include="Content\Doctorsignup.css" />
     <Content Include="Content\Index.css" />
+    <Content Include="Content\Patientscontoller.css" />
+    <Content Include="Content\Patientsignup.css" />
+    <Content Include="Content\Pictures\delete-icon2.jpg" />
+    <Content Include="Content\Pictures\doctor-profile.jpg" />
+    <Content Include="Content\Pictures\frontimage.jpg" />
+    <Content Include="Content\Pictures\icon.jpg" />
+    <Content Include="Content\Pictures\istockphoto-514935242-612x612.jpg" />
+    <Content Include="Content\Pictures\istockphoto-514981552-612x612.jpg" />
+    <Content Include="Content\Pictures\logo.jpg" />
+    <Content Include="Content\Pictures\patient-index-bg.jpeg" />
+    <Content Include="Content\Pictures\profile-doctor.jpg" />
+    <Content Include="Content\Pictures\rainbow.jpeg" />
+    <Content Include="Content\Pictures\signin-image.jpeg" />
+    <Content Include="Content\Pictures\view-profile2.jpeg" />
+    <Content Include="Content\Stylesheet\about.css" />
+    <Content Include="Content\Stylesheet\contact.css" />
+    <Content Include="Content\Stylesheet\DoctorController.css" />
+    <Content Include="Content\Stylesheet\DoctorDelete.css" />
+    <Content Include="Content\Stylesheet\DoctorEditDoctorProfile.css" />
+    <Content Include="Content\Stylesheet\doctorprofileedit.css" />
+    <Content Include="Content\Stylesheet\Doctorsignup.css" />
+    <Content Include="Content\Stylesheet\Index.css" />
+    <Content Include="Content\Stylesheet\IndexPatient.css" />
+    <Content Include="Content\Stylesheet\Patientscontoller.css" />
+    <Content Include="Content\Stylesheet\Patientsignup.css" />
+    <Content Include="Content\Stylesheet\Signin.css" />
+    <Content Include="Content\Stylesheet\_layout.css" />
     <Content Include="Content\_layout.css" />
+    <Content Include="ErrorLog.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Javascript\Admincontroller.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Pictures\doctor3.webp" />
+    <Content Include="Content\Pictures\rainbow.webp" />
+    <Content Include=".gitignore" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\contact.js" />
+    <Content Include="Scripts\DoctorController.js" />
+    <Content Include="Scripts\Doctorsignup.js" />
+    <Content Include="Scripts\Javascript\Backbutton.js" />
+    <Content Include="Scripts\Javascript\contact.js" />
+    <Content Include="Scripts\Javascript\DoctorController.js" />
+    <Content Include="Scripts\Javascript\Doctorsignup.js" />
+    <Content Include="Scripts\Javascript\patientcontroller.js" />
+    <Content Include="Scripts\Javascript\patientsignup.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -167,7 +236,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\patientcontroller.js" />
+    <Content Include="Scripts\patientsignup.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -179,13 +251,56 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\Shared\_HomePageLayout.cshtml" />
+    <Content Include="Views\Home\Patientsignup.cshtml" />
+    <Content Include="Views\Home\Doctorsignup.cshtml" />
+    <Content Include="Views\Home\Signin.cshtml" />
+    <Content Include="Views\Patient\patient.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage2.cshtml" />
+    <Content Include="Views\Doctor\Index.cshtml" />
+    <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\Doctor\Details.cshtml" />
+    <Content Include="Views\Shared\_DoctorLayoutPage.cshtml" />
+    <Content Include="Views\Doctor\Edit.cshtml" />
+    <Content Include="Views\Doctor\Delete.cshtml" />
+    <Content Include="Views\Patient\SlotBooking.cshtml" />
+    <Content Include="Views\Shared\_PatientLayoutPage.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Patient\Details.cshtml" />
+    <Content Include="Views\Admin\Deletedoctor.cshtml" />
+    <Content Include="Views\Patient\Edit.cshtml" />
+    <Content Include="Views\Patient\Delete.cshtml" />
+    <Content Include="Views\Patient\BookingDoctorPatient.cshtml" />
+    <Content Include="Views\Patient\Booking.cshtml" />
+    <Content Include="Views\Admin\Addadmin.cshtml" />
+    <Content Include="Views\Admin\EditAdmin.cshtml" />
+    <Content Include="Views\Admin\AdminDelete.cshtml" />
+    <Content Include="Views\Patient\viewappointment.cshtml" />
+    <Content Include="Views\Patient\Editappointment.cshtml" />
+    <Content Include="Views\Patient\DeleteAppointment.cshtml" />
+    <Content Include="Views\Shared\_PatientDetails.cshtml" />
+    <Content Include="Views\Patient\ViewProfile.cshtml" />
+    <Content Include="Views\Doctor\Getappointmentdetails.cshtml" />
+    <Content Include="Views\Error.cshtml" />
+    <Content Include="Views\Doctor\ViewProfieDoctor.cshtml" />
+    <Content Include="Views\Admin\DeleteConfirmation.cshtml" />
+    <Content Include="Views\Admin\DeletePatient.cshtml" />
+    <Content Include="Views\Admin\Viewprofile.cshtml" />
+    <Content Include="Views\Patient\Editappointment1.cshtml" />
+    <Content Include="Views\View.cshtml" />
+    <Content Include="Views\Home\AddConcern.cshtml" />
+    <Content Include="Views\Admin\ViewMessageList.cshtml" />
+    <Content Include="Views\Admin\DeleteMessageList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="ErrorFile\" />
+    <Folder Include="Images\" />
+    <Folder Include="NewFolder1\" />
+    <Folder Include="Views\Contact\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

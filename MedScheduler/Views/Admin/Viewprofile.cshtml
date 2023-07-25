@@ -1,0 +1,142 @@
+﻿@model MedScheduler.Models.AdminModel
+
+@{
+    ViewBag.Title = "Viewprofile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>View profile</h2>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link href="~/Content/Stylesheet/Patientscontoller.css" rel="stylesheet" />
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger d-flex justify-content-between">
+        <strong>Information:  @TempData["ErrorMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["SuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div class="row">
+    <h1 class="text-center">Profile details</h1>
+    <div class="col-4 view-profile-left">
+        <dl>
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Adminname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adminname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Jobrole)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Jobrole)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Identity_verification)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Identity_verification)
+            </dd>
+
+
+        </dl>
+    </div>
+    <div class="col-4">
+        <img class="w-100 h-100" src="~/Content/Pictures/view-profile2.jpeg" />
+    </div>
+    <p class="m-3">
+
+        <button class="btn btn-warning text-decoration-none text-dark fw-bold">
+            @Html.ActionLink("Edit", "Edit", "Patient", new { id = Model.Id }, new { @class = "nav-link" })
+        </button>
+
+        <button class="btn btn-danger text-decoration-none text-dark fw-bold">
+            @Html.ActionLink("Delete", "Delete", "Patient", new { id = Model.Id }, new { @class = "nav-link" })
+        </button>
+
+        <button class="btn btn-info text-decoration-none text-dark fw-bold">
+            @Html.ActionLink("Back", "Index")
+        </button>
+
+
+        <button class="bg-primary border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">Change password</button>
+
+</div>
+@*model *@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="@Url.Action("Changepassword", "Admin")">
+                    <div></div>
+                    <label>Username</label>
+                    <input id="Username" placeholder="Username" class="form-control" name="Username" onfocusout="UsernamechangePassword()" />
+                    <div id="username-error" class="text-danger fs-5 fw-bolder"></div>
+                    <label>Password</label>
+                    <input id="Password" placeholder="Password" class="form-control" name="Password" onfocusout="PasswordchangePassword()" />
+                    <div id="password-error" class="text-danger fs-5 fw-bolder"></div>
+                    <label>New password</label>
+                    <input id="changePassword" placeholder="New password" class="form-control" name="New_password" onfocusout="NewPasswordchangePassword()" />
+                    <div id="cpassword-error" class="text-danger fs-5 fw-bolder"></div>
+                    <button class="btn btn-info text-decoration-none text-dark fw-bold" id="button">
+                        Save changes
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</p>
+<script src="~/Scripts/Javascript/patientcontroller.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+@*<script>
+    var isPresent = '@ViewBag.IsPresent';
+    if (isPresent === 'True') {
+        document.getElementById('newpassword-div').classList.remove('visually-hidden');
+    }
+</script>*@

@@ -1,0 +1,44 @@
+﻿body {
+  
+}
+
+.displaydetails {
+    position: absolute;
+    top: 57px;
+    right: -400px; /* Off-screen position */
+    width: 400px;
+    height: 100%;
+    background-color: #fff;
+    transition: right 0.3s ease-in-out;
+}
+.displaydetailsClick {
+    right: 0;
+}
+
+.doctor-profile-option {
+    width: 50%;
+    height: 300px;
+    color: black;
+    font-size: 25px;
+    font-weight: bolder;
+    text-align:center;
+   border:1px solid black; 
+}
+.doctor-profile-option img{
+    mix-blend-mode:multiply;
+}
+.doctor-view-option-left{
+    background-color:black;
+    opacity:0.8;
+}
+
+.smallshow {
+    display: block;
+}
+
+.smallhidden {
+    display: hidden;
+}
+.bodyContainer{
+    margin-top:100px;
+}

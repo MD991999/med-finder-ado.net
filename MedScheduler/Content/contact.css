@@ -1,10 +1,8 @@
 ﻿body {
-    /*
-        background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210928/pngtree-geometric-carbon-based-structure-health-care-light-effect-background-image_907490.png");
-    background-size: cover;
-   */
-    padding:0;
-    margin:0;
+    /* background-image: url("https://img.lovepik.com/background/20211022/large/lovepik-medical-material-background-image_500692547.jpg");
+    background-size: cover;*/
+    padding: 0;
+    margin: 0;
 }
 /* contact session */
 * {
@@ -100,6 +98,7 @@
 
 .divButton {
     width: 100%;
+    margin-top:15px;
 }
 
     .divButton button {
@@ -143,18 +142,25 @@
 
 .validateNameError, .validateEmailError, .validateMobileError, .validateMessageError {
     color: rgb(207, 55, 55);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 .contact-us-div{
     width:100%;
     height:200px;
 
 }
-.inputFullname, #inputEmail, #inputmob, #inputMessage {
+.inputFullname, #email, #phonenumber, #message {
     background-color: lightgrey;
     color: black;
+    border: none;
+    outline: none;
+    margin-top: 0;
+    margin-bottom: 0;
 }
+
 .address-location-number-div{
     width:30%;
     height:auto;
@@ -209,4 +215,17 @@
     position:absolute;
    top:200px;
    left:210px;
+   
+}
+.smallshown{
+    display:block;
+}
+.smallhidden {
+    display: hidden;
+}
+.small{
+    color:brown;
+    font-size:20px;
+    font-weight:600;
+
 }
