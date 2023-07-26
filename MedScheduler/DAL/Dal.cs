@@ -72,7 +72,7 @@ namespace MedScheduler.DAL
         }
 
         /// <summary>
-        /// function that is used to register the details of the doctors in database
+        ///    to register the details of the doctors in database
         /// </summary>
         /// <param name="doctordetails"></param>
         /// <param name="ImageFile"></param>
@@ -197,7 +197,7 @@ namespace MedScheduler.DAL
         }
 
         /// <summary>
-        /// function used to list all doctors in the database
+        ///  to list all doctors in the database
         /// </summary>
         /// <returns></returns>
         public List<DoctorSignUp> getalldoctor()
@@ -249,7 +249,7 @@ namespace MedScheduler.DAL
         }
 
         /// <summary>
-        /// function used to view details of a particular doctor using username
+        ///  to view details of a particular doctor using username
         /// </summary>
         /// <param name="Username"></param>
         /// <returns></returns>
@@ -303,7 +303,7 @@ namespace MedScheduler.DAL
         }
 
         /// <summary>
-        /// the below function is to get the details of single doctor passing id as parameter
+        ///  to get the details of single doctor passing id as parameter
         /// </summary>
         /// <param name="id"></param>
         /// <returns>this function returns list of doctors with that specific id</returns>
@@ -359,7 +359,7 @@ namespace MedScheduler.DAL
         }
 
         /// <summary>
-        /// function used to update the details of a doctor 
+        ///  to update the details of a doctor 
         /// </summary>
         /// <param name="doctorSignUp"></param>
         /// <param name="ImageFile"></param>
@@ -448,15 +448,10 @@ namespace MedScheduler.DAL
                 conn.Close();
             }
         }
-        /*       public bool SlotBooking()
-        {
-            connection();
-            SqlCommand command = new SqlCommand("SPI_Table_SlotBooking", conn);
-            return true;
-        }    */
+       
 
         /// <summary>
-        ///     this function to get the list of patients stored in the database
+        ///      to get the list of patients stored in the database
         /// </summary>
         /// <returns>this function returns a list of patients </returns>
         public List<PatientSignUp> getallpatients()
@@ -681,7 +676,6 @@ namespace MedScheduler.DAL
                         Password = Encrypt(dr["Password"].ToString())
                     });
                 }
-                //HttpContext.Current.Session["PatientSignUp"] = patientSignUp; // Save patientSignUp in session
                 return patientSignUp;
             }
             finally
@@ -734,7 +728,7 @@ namespace MedScheduler.DAL
         }
 
         /// <summary>
-        /// function used to add the admin details in the database
+        /// to add the admin details in the database
         /// </summary>
         /// <param name="adminmodel"></param>
         /// <returns></returns>
@@ -769,7 +763,7 @@ namespace MedScheduler.DAL
         }
 
         /// <summary>
-        /// function used to get the details of all the admins in the database
+        ///  to get the details of all the admins in the database
         /// </summary>
         /// <returns></returns>
         public List<AdminModel> getalladmin()
@@ -806,49 +800,9 @@ namespace MedScheduler.DAL
           
         }
 
-        /// <summary>
-        /// function provides logic to how to update the details a single admin in the database
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <param name="adminModel"></param>
-        /// <returns></returns>
-      /*  public bool UpdateAdminDetails(int Id, AdminModel adminModel)
-
-        {
-            try
-            {
-                connection();
-                SqlCommand command = new SqlCommand("SPU_Tbl_Admindetails", conn);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@Id", Id);
-                command.Parameters.AddWithValue("@Adminname", adminModel.Adminname);
-                command.Parameters.AddWithValue("@Jobrole", adminModel.Jobrole);
-                command.Parameters.AddWithValue("@Username", adminModel.Username);
-                //command.Parameters.AddWithValue("@Password", Encrypt(adminModel.Password));
-               // command.Parameters.AddWithValue("@Identity_verification", adminModel.Identity_verification);
-
-
-                conn.Open();
-                int i = command.ExecuteNonQuery(); //ExecuteNonQuery will have either 1 or 0 as its value.If we insert the data successfully the value that we obtain will be 1 other wise it will be 0.
-                if (i > 0)
-                {
-
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            finally
-            {
-                conn.Close();
-            }
-         
-        }  */
 
         /// <summary>
-        /// function is used to retrive the information of a single admin based on their id 
+        /// to retrive the information of a single admin based on their id 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -896,7 +850,7 @@ namespace MedScheduler.DAL
         }
 
         /// <summary>
-        /// function used to delete the admin details
+        ///  to delete the admin details
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -927,7 +881,7 @@ namespace MedScheduler.DAL
 
 
         /// <summary>
-        /// function to get the details of a  appointmants based on the patient id (there will list of appointments)
+        /// to get the details of a  appointmants based on the patient id (there will list of appointments)
         /// </summary>
         /// <param name="id"></param>
         /// <returns>this will return a list of appointments that the patient had booked</returns>
@@ -973,7 +927,7 @@ namespace MedScheduler.DAL
         }
 
         /// <summary>
-        /// function is used to display the appointment details of a person based on their appointment id,not based on the user id
+        ///  to display the appointment details of a person based on their appointment id,not based on the user id
         /// </summary>
         /// <param name="id"></param>
         /// <returns>return a single aappointment details of a patient based on appointment id</returns>
@@ -1410,10 +1364,3 @@ namespace MedScheduler.DAL
 
     }
 }
-
-
-
-
-
-
-    

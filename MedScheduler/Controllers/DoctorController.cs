@@ -15,31 +15,13 @@ namespace MedScheduler.Controllers
     [Authorize]
     public class DoctorController : Controller
     {
+
+
         // GET: Doctor
         public ActionResult Index()
         {
-            /* Dal dal = new Dal();
-             try
-             {
-                 var appointmentdetails = dal.getalladminppointmentdetails(id);
-                 if (appointmentdetails != null)
-                 {
-                     return View(appointmentdetails);
-                 }
-                 else
-                 {
-                     ViewBag.Message = "No appointments!";
-                     return View();
-                 }
-             }
-             catch (Exception error)
-             {
-                 TempData["ErrorMessage"] = error;
-                 return View();
-             } */
             return View();
         }
-
         /// <summary>
         /// get the details of a   doctor using username and session tag
         /// </summary>
@@ -65,37 +47,7 @@ namespace MedScheduler.Controllers
             }
            
         }
-        /*   Console.WriteLine(Username);
-                  Dal dal = new Dal();
-                  DataTable data = null;
-                  data=dal.viewparticulardoctor(Username);
-                  // return View(data);
-              //    Session["data"] = data;
-                   return View(data);    */
-
         
-        // GET: Doctor/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Doctor/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         /// <summary>
         /// used to get  details of a doctor  to update  using id
@@ -127,8 +79,6 @@ namespace MedScheduler.Controllers
         [HttpPost]
         public ActionResult Edit(int id, DoctorSignUp doctorSignUp, HttpPostedFileBase ImageFile)
         {
-
-
             bool isupdated = false;
             string photoid = doctorSignUp.Profilephoto;
             string image = Session["doctorListImage"].ToString();
@@ -319,7 +269,7 @@ namespace MedScheduler.Controllers
               
                 bool isupdated = false;
                 data = dal.passwordchange(signin);
-                //  string specialisation = data.Rows[0]["Specialisation"].ToString();
+               
                 if (data != null && data.Rows.Count > 0)
                 {
                     if (data.Columns.Contains("Specialisation"))
@@ -328,7 +278,7 @@ namespace MedScheduler.Controllers
                         if (isupdated)
                         {
                             TempData["DPasswordUpdateSuccessMessage"] = "Successfully updated";
-                            return RedirectToAction("ViewProfieDoctor", "Doctor");
+                            return RedirectToAction("Signin", "Home");
                         }
                         else
                         {
@@ -374,7 +324,7 @@ namespace MedScheduler.Controllers
                 ErrorLogger.LogError(ex);
                 TempData["DPasswordUpdateErrorMessage"] = "Validation error";
               return  RedirectToAction("ViewProfieDoctor", "Doctor");
-                //  return RedirectToAction("ViewProfile", "Patient");
+               
             }
         }
     }

@@ -73,7 +73,7 @@ namespace MedScheduler.Models
 
         //password
         [Required(ErrorMessage = "Field is required")]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", ErrorMessage = "Password must be a minimum of eight characters, including at least one uppercase letter, one lowercase letter, one symbol, and one number.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", ErrorMessage = "Password must be a minimum of eight characters, including at least one uppercase letter, one lowercase letter, one symbol(@$!%*?&), and one number.")]
         [DataType(DataType.Password)]
 
         public string Password { get; set; }

@@ -105,7 +105,7 @@ namespace MedScheduler.Controllers
         {
             Dal dal = new Dal();
            
-            ModelState.Clear();  //whenever we encounter any validation erro it get populated in the modelstate dictionary.Son once we tried to bring changes in  the model state and validations,there is a chance that the previous validation error may get displayed in the view side.To avoid this we use ModelState.Clear().
+            ModelState.Clear();  
             try
             {
                 if (ModelState.IsValid)
@@ -137,7 +137,7 @@ namespace MedScheduler.Controllers
             {
                 ErrorLogger.LogError(ex);
                 TempData["ErrorMessage"] = ex;
-                //return View("Error");
+                
                return RedirectToAction("Index");
             }
         }
@@ -161,7 +161,7 @@ namespace MedScheduler.Controllers
             try
             {
                 data = dal.signindetails(userdetails);
-                //  string specialisation = data.Rows[0]["Specialisation"].ToString();
+               
                 if (data != null && data.Rows.Count > 0)
                 {
                     if (data.Columns.Contains("Specialisation"))
@@ -170,10 +170,7 @@ namespace MedScheduler.Controllers
                         Session["username"] = userdetails.Username;
                         FormsAuthentication.SetAuthCookie(userdetails.Username, false);
                         Session["Role"] = "Doctor";
-
-                        //A session is a way to persist data across multiple requests from the same user. It is a server-side mechanism that allows storing user-specific information that can be accessed throughout the user's session on the website.
                         return RedirectToAction("Index", "Doctor");
-                        //here first is the action name and second is the controller name
                     }
                     else if (data.Columns.Contains("Identity_verification"))
                     {
@@ -181,7 +178,6 @@ namespace MedScheduler.Controllers
                         Session["username"] = userdetails.Username;
                         Session["Role"] = "Admin";
                         FormsAuthentication.SetAuthCookie(userdetails.Username, false);
-                        //A session is a way to persist data across multiple requests from the same user. It is a server-side mechanism that allows storing user-specific information that can be accessed throughout the user's session on the website.
                         return RedirectToAction("Index", "Admin");
                         //here first is the action name and second is the controller name
                     }
@@ -204,7 +200,6 @@ namespace MedScheduler.Controllers
             {
                 ErrorLogger.LogError(ex);
                 TempData["ErrorMessage"] = ex.ToString();
-                //return RedirectToAction("Index");
                 return View("");
             }
         }
@@ -259,11 +254,9 @@ namespace MedScheduler.Controllers
             {
                 ErrorLogger.LogError(ex);
                 TempData["AddConcernErrorMessage"] = ex;
-                // return RedirectToAction("Index");
                 return View();
             }
         }  
  }
 }
 
-                

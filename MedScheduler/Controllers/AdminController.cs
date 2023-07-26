@@ -130,9 +130,7 @@ namespace MedScheduler.Controllers
             catch (Exception error)
             {
                 ErrorLogger.LogError(error);
-
                 TempData["ErrorMessage"] = error;
-                // return RedirectToAction("Index");
                 return View();
             }
         }
@@ -151,65 +149,6 @@ namespace MedScheduler.Controllers
 
         }
 
-        /// <summary>
-        ///  to get an admin details by using id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns> 
-        [HttpGet]
-        public ActionResult EditAdmin(int id)
-        {
-            if (id != 0)
-            {
-                Dal dal = new Dal();
-                var adminList = dal.viewadmin(id).FirstOrDefault(); ;
-                return View(adminList);
-            }
-            return View();
-
-        }
-
-        /// <summary>
-        ///  to edit an  admin details
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="adminModel"></param>
-        /// <returns></returns>
-        [HttpPost]
-       /* public ActionResult EditAdmin(int id, AdminModel adminModel)
-        {
-            try
-            {
-                Dal dal = new Dal();
-                bool isupdated = false;
-               
-              
-                {
-                    isupdated = dal.UpdateAdminDetails(id, adminModel);
-                    if (isupdated)
-                    {
-                        TempData["SuccessMessage"] = "Updated succesfully";
-                       
-                        return RedirectToAction("Index", "Admin");
-
-                    }
-                    else
-                    {
-                        TempData["ErrorMessage"] = "Updation cancelled";
-                        return View();
-
-                    }
-                }
-
-            }
-            catch (Exception error)
-            {
-                ErrorLogger.LogError(error);
-
-                TempData["ErrorMessage"] = error;
-                return View("Error");
-            }
-        }    */
       
         /// <summary>
         ///  to get a  admin details using id inorder to delete
@@ -261,7 +200,7 @@ namespace MedScheduler.Controllers
                 ErrorLogger.LogError(error);
 
                 TempData["ErrorMessage"] = error;
-                // return View();
+                
                 return View("Error");
             }
 
@@ -296,10 +235,6 @@ namespace MedScheduler.Controllers
 
         /// <summary>
         ///  for deleting a  patient details  using patientid
-        /*In this example, the action method is named DeleteConfirmation, but by using [HttpPost, ActionName("Delete")],
-         you specify that the action should be treated as the "Delete" action. So, when the form is submitted,
-         it will invoke the DeleteConfirmation action method, but the URL and routing will still show the action as
-         "Delete".*/
         /// </summary>
         /// <param name="id"></param>
         /// <returns>this function returns  a message to the view whether deletion is successfull/not</returns>
@@ -415,10 +350,6 @@ namespace MedScheduler.Controllers
 
         /// <summary>
         ///  for deleting a  patient details  using patientid
-        /*In this example, the action method is named DeleteConfirmation, but by using [HttpPost, ActionName("Delete")],
-         you specify that the action should be treated as the "Delete" action. So, when the form is submitted,
-         it will invoke the DeleteConfirmation action method, but the URL and routing will still show the action as
-         "Delete".*/
         /// </summary>
         /// <param name="id"></param>
         /// <returns>this function returns  a message to the view whether deletion is successfull/not</returns>
@@ -465,11 +396,7 @@ namespace MedScheduler.Controllers
             ModelState.Clear();
             try
             {
-              /*  if (!ModelState.IsValid)
-                {
-                    TempData["ErrorMessage"] = "All fields are required";
-                    return RedirectToAction("Index", "Admin");
-                }  */
+             
                 bool isupdated = false;
                 data = dal.passwordchange(signin);
                 if (data != null && data.Rows.Count > 0)
@@ -482,7 +409,7 @@ namespace MedScheduler.Controllers
                         if (isupdated)
                         {
                             TempData["SuccessMessage"] = "Successfully updated";
-                            return RedirectToAction("Index", "Home");
+                            return RedirectToAction("Signin", "Home");
                         }
                         else
                         {

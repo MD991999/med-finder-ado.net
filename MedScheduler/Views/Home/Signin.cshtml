@@ -22,6 +22,21 @@ else if (TempData["SuccessMessage"] != null)
     </div>
 }
 
+else if (TempData["PatientSignupSuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["PatientSignupSuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+else if (TempData["DPasswordUpdateSuccessMessage"] != null)
+{
+    <div class="alert alert-success d-flex justify-content-between">
+        <strong>Success:@TempData["DPasswordUpdateSuccessMessage"] </strong>
+        <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
+    </div>
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -33,6 +48,7 @@ else if (TempData["SuccessMessage"] != null)
         <div class="row w-50 border-1 border-danger">
             <div class="col-3"></div>
             <div class="col-6 w-50 signin-form ">
+                @*Username*@
                 <div class="form-group  ">
                     @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2 fs-5 fw-bold" })
                     <div class="col-md-10  w-100  signin-input">
@@ -40,6 +56,7 @@ else if (TempData["SuccessMessage"] != null)
                         @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                @*Password*@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2 fs-5 fw-bold" })
@@ -48,6 +65,7 @@ else if (TempData["SuccessMessage"] != null)
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                @*Identity_verification*@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Identity_verification, htmlAttributes: new { @class = "control-label  fs-5 fw-bold" })
@@ -58,6 +76,8 @@ else if (TempData["SuccessMessage"] != null)
                         <p class="fs-5 text-danger">Only for admin</p>
                     </div>
                 </div>
+
+
                 <div class="form-group d-flex justify-content-evenly align-items-center m-4">
                     <div class="col-md-offset-2 col-md-10">
                         <a href="@Url.Action("Index", "Patient")" class="d-flex  text-decoration-none">
@@ -73,10 +93,6 @@ else if (TempData["SuccessMessage"] != null)
             </div>
             <div class="col-3"></div>
         </div>
-
-
-
-
     </div>
 }
 
@@ -85,6 +101,4 @@ else if (TempData["SuccessMessage"] != null)
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval");
-
-
 }

@@ -32,7 +32,7 @@ namespace MedScheduler.Controllers
                 {
                     TempData["SuccessMessage"] = "Sorry no one registered";
                 }
-                Session["DoctorsList"] = doctorsList; // Add doctorsList to the view session
+                Session["DoctorsList"] = doctorsList;
                 return View(doctorsList);
             }
             catch (Exception ex)
@@ -41,49 +41,6 @@ namespace MedScheduler.Controllers
                 TempData["ErrorMessage"] = ex;
                 return View();
             }
-        }
-
-        // GET: Patient/Details/5
-        /*   public ActionResult Details(int id)
-          {
-
-          string Username = Session["username"]?.ToString();
-                  Console.WriteLine(Username);
-                           if (Username != null)
-                           {
-                               Dal dal = new Dal();
-                               var PatientDetails = dal.viewparticularpatientdetails(Username).FirstOrDefault(); ;
-                    Session["patientdetails"] = PatientDetails;
-                 ViewBag.Doctordetails = dal.particulardoctor(id);// Store patientDetails in the session
-                      return View(PatientDetails);
-                            }     
-              return View(); 
-          }    
-                 */
-
-        /*      public ActionResult Details()
-         {
-             string Username = Session["username"]?.ToString();
-             Console.WriteLine(Username);
-             if (Username != null)
-             {
-                 Dal dal = new Dal();
-                 var patientDetails = dal.viewparticularpatientdetails(Username).FirstOrDefault();
-                 ViewBag.PatientDetails = patientDetails;
-
-                 // Retrieve doctorsList from session
-                 var doctorsList = Session["DoctorsList"] as List<DoctorSignUp>;
-                 ViewBag.DoctorsList = doctorsList;
-
-                 return View(patientDetails);
-             }
-             return View();
-         }      */
-
-        // GET: Patient/Create
-        public ActionResult Create()
-        {
-            return View();
         }
 
         /// <summary>
@@ -212,19 +169,6 @@ namespace MedScheduler.Controllers
 
         }
 
-        [HttpGet]
-        public ActionResult SlotBooking()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult SlotBooking(int id)
-        {
-           
-            return View();
-        }
-
         /// <summary>
         /// to get all the patients enrolled in the website 
         /// </summary>
@@ -265,7 +209,6 @@ namespace MedScheduler.Controllers
             Doctor_Patient_SlotBooking doctor_Patient_SlotBooking = new Doctor_Patient_SlotBooking();
             doctor_Patient_SlotBooking.DoctorSignUp = dal.particulardoctor(id);
             doctor_Patient_SlotBooking.PatientSignUp = dal.viewparticularpatientdetails(Username);
-            //Session["PatientDetails"] = doctor_Patient_SlotBooking;
             doctor_Patient_SlotBooking.SlotBooking = slotBooking;
             return View(doctor_Patient_SlotBooking);
 
@@ -311,15 +254,10 @@ namespace MedScheduler.Controllers
                 {
                     ErrorLogger.LogError(error);
                     TempData["ErrorMessage"] = error.Message;
-                    //  return View("Index", "Patient");
                     return RedirectToAction("Index", "Patient");
                 }
             }
           
-        
-          
-    
-        
         /// <summary>
         ///  to get the complete list of appointment details of a  patient   based on patient id
         /// </summary>
@@ -438,7 +376,6 @@ namespace MedScheduler.Controllers
                         return View(deleteappointmentDetailsView);
                     }
                 }
-                // Handle the case when id is null or 0, or when the appointment details are not found
                 return View();
             }
             catch (Exception error)
@@ -530,15 +467,9 @@ namespace MedScheduler.Controllers
             ModelState.Clear();
             try
             {
-               // if (!ModelState.IsValid)
-               // {
-                    // If the model state is not valid, return the view with the validation errors.
-               //     TempData["ErrorMessage"] = "All fields are required";
-                 //   return RedirectToAction("Viewprofile", "Patient");
-              //  }
+              
                 bool isupdated = false;
                 data = dal.passwordchange(signin);
-                //  string specialisation = data.Rows[0]["Specialisation"].ToString();
                 if (data != null && data.Rows.Count > 0)
                 {
                     if (data.Columns.Contains("Specialisation"))
@@ -609,26 +540,3 @@ namespace MedScheduler.Controllers
 }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

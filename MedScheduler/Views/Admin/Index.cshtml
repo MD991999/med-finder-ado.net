@@ -1,23 +1,10 @@
-﻿@*@using MedScheduler.Models;
-    @model DoctorsPatientsModel;
+﻿@using MedScheduler.Models;
+@model DoctorsPatientsModel
 
-
-
-    <h2>Index</h2>
-    @foreach (var doctor in Model.DoctorSignUp)
-    {
-        <h1>@doctor.Firstname </h1>
-    }
-    @foreach (var patient in Model.PatientSignUp)
-    {
-        <h1>@patient.Firstname </h1>
-    }*@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@using MedScheduler.Models;
-@model DoctorsPatientsModel
 
 
 <link href="~/Content/AdminController.css" rel="stylesheet" />
@@ -73,7 +60,7 @@ else if (TempData["AdminChangePasswordErrorMessage"] != null)
 
             <th class="text-secondary">Time slot</th>
             <th class="w-25"></th>
-            <!-- Add more columns as needed -->
+            
         </tr>
     </thead>
     <tbody>
@@ -119,7 +106,7 @@ else if (TempData["AdminChangePasswordErrorMessage"] != null)
             <th class="text-secondary">State</th>
             <th class="text-secondary">City</th>
             <th></th>
-            <!-- Add more columns as needed -->
+          
         </tr>
     </thead>
     <tbody>
@@ -142,7 +129,7 @@ else if (TempData["AdminChangePasswordErrorMessage"] != null)
                     <a href="@Url.Action("DeletePatient", "Admin", new { id=patient.Id })" type="button" class="btn btn-danger w-100">Delete</a>
                 </td>
 
-                <!-- Add more cells as needed -->
+                
             </tr>
 
         }
@@ -158,7 +145,7 @@ else if (TempData["AdminChangePasswordErrorMessage"] != null)
 
             <th class="text-secondary">Name</th>
             <th class="text-secondary">Job role</th>
-            <!-- Add more columns as needed -->
+         
         </tr>
     </thead>
     <tbody>
@@ -169,14 +156,7 @@ else if (TempData["AdminChangePasswordErrorMessage"] != null)
                 <td class="text-secondary">@admin.Adminname</td>
                 <td class="text-secondary">@admin.Jobrole</td>
 
-                @* <td>
-            <a href="@Url.Action("EditAdmin", "Admin", new {id=admin.Id})" type="button" class="btn btn-danger w-25">Edit</a>
-                    </td>
-                     <td>
-                    <a href="@Url.Action("AdminDelete", "Admin", new {id=admin.Id})" type="button" class="btn btn-danger w-25">Delete</a>
-                    </td>
-                    *@
-                <!-- Add more cells as needed -->
+              
             </tr>
         }
     </tbody>
