@@ -47,6 +47,185 @@ function NewPasswordchangePassword() {
 }
 
 
+function Messagevalidation() {
+    const messagevalidation = document.getElementById("Messagevalidation");
+    if (messagevalidation.value.trim() === "") {
+        setError(messagevalidation, "Field is required")
+    }
+   
+    else {
+        setSuccess(messagevalidation)
+
+    }
+
+
+}
+
+function Agevalidation() {
+    const agevalidation = document.getElementById("Agevalidation");
+    if (agevalidation.value.trim() === "") {
+        setError(agevalidation, "Field is required")
+    }
+
+    else {
+        setSuccess(agevalidation)
+
+    }
+
+
+}
+function dobvalidation() {
+    const Dobvalidation = document.getElementById("dobvalidation");
+    if (Dobvalidation.value.trim() === "") {
+        setError(Dobvalidation, "Field is required")
+    }
+
+    else {
+        setSuccess(Dobvalidation)
+
+    }
+
+
+}
+
+function timevalidation() {
+    const Timevalidation = document.getElementById("timevalidation");
+    if (Timevalidation.value.trim() === "") {
+        setError(Timevalidation, "Field is required")
+    }
+
+    else {
+        setSuccess(Timevalidation)
+
+    }
+
+
+}
+
+
+// set errror message
+function setError(input, message) {
+    const button = document.getElementById('button');
+    const formcontrol = input.parentElement;
+    const small = formcontrol.querySelector('small')
+    small.className = 'smallshown';
+    small.innerText = message;
+    small.style.color = 'red';
+    small.style.fontWeight = 'bold';
+    small.style.fontSize = '20px';
+    button.disabled = true;
+    button.style.opacity = '0.5';
+}
+
+
+//setsuccess message
+function setSuccess(input) {
+    const button = document.getElementById('button');
+    const formcontrol = input.parentElement;
+    const small = formcontrol.querySelector('small')
+    small.className = 'smallhidden';
+    small.innerText = '';
+
+    button.disabled = false;
+}
+
+
+
+
+
+
+
+
+
+
+// Function to perform form validation on submit
+function validateForm() {
+    var isValid = true;
+
+    // Age validation
+    var ageInput = document.getElementById("Agevalidation");
+    if (ageInput.value.trim() === "") {
+        setError(ageInput, "Age is required.");
+        isValid = false;
+    } else {
+        setSuccess(ageInput);
+    }
+
+    // Message validation
+    var messageInput = document.getElementById("Messagevalidation");
+    if (messageInput.value.trim() === "") {
+        setError(messageInput, "Message is required.");
+        isValid = false;
+    } else {
+        setSuccess(messageInput);
+    }
+
+    // Date of appointment validation
+    var dateInput = document.getElementById("dobvalidation");
+    if (dateInput.value.trim() === "") {
+        setError(dateInput, "Date of appointment is required.");
+        isValid = false;
+    } else {
+        setSuccess(dateInput);
+    }
+
+    // Time of appointment validation
+    var timeInput = document.getElementById("timevalidation");
+    if (timeInput.value.trim() === "") {
+        setError(timeInput, "Time of appointment is required.");
+        isValid = false;
+    } else {
+        setSuccess(timeInput);
+    }
+
+    return isValid;
+}
+
+// Hook form validation to form submit event
+document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("myForm");
+    form.addEventListener("submit", function (event) {
+        if (!validateForm()) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
+});
+
+// Set error message
+function setError(input, message) {
+    var button = document.getElementById('button');
+    var formcontrol = input.parentElement;
+    var small = formcontrol.querySelector('small');
+    small.innerText = message;
+    small.classList.add('smallshown');
+    small.style.color = 'red';
+    small.style.fontWeight = 'bold';
+    small.style.fontSize = '20px';
+    button.disabled = true;
+    button.style.opacity = '0.5';
+}
+
+// Set success message
+function setSuccess(input) {
+    var button = document.getElementById('button');
+    var formcontrol = input.parentElement;
+    var small = formcontrol.querySelector('small');
+    small.classList.remove('smallshown');
+    small.innerText = '';
+    button.disabled = false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /*function filterDoctors() {
     var specialization = document.getElementById("specialization").value.toLowerCase();
     var specializationCards = document.getElementsByClassName("specialization-card");

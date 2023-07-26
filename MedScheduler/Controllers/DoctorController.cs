@@ -328,7 +328,7 @@ namespace MedScheduler.Controllers
                         if (isupdated)
                         {
                             TempData["DPasswordUpdateSuccessMessage"] = "Successfully updated";
-                            return RedirectToAction("Index", "Home");
+                            return RedirectToAction("ViewProfieDoctor", "Doctor");
                         }
                         else
                         {

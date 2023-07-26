@@ -33,7 +33,7 @@ namespace MedScheduler.Models
         public string Lastname { get; set; }
 
         //dateofbirth
-        [Range(0, int.MaxValue, ErrorMessage = "Age must be a non-negative number.")]
+        [Range(25, int.MaxValue, ErrorMessage = "Age must be a non-negative number.")]
         public int Age { get; set; }
 
 

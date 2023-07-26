@@ -43,3 +43,15 @@ font-weight:bolder;
 .profile-details-value{
     font-size:18px;
 }
+.smallshow {
+    display: block;
+}
+
+.smallhidden {
+    display: hidden;
+}
+.required-indicator {
+    color: red;
+    font-size: 25px;
+   
+}

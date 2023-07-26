@@ -41,7 +41,7 @@ namespace MedScheduler.Models
 
         //dateofbirth
         [Required(ErrorMessage ="Field is required")]
-        [Range(0, int.MaxValue, ErrorMessage = "Age must be a non-negative number.")]
+       // [Range(0, int.MaxValue, ErrorMessage = "Age must be a non-negative number.")]
         public int Age { get; set; }
 
 

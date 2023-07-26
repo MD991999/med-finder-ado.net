@@ -149,7 +149,6 @@
     <Compile Include="Models\Signin.cs" />
     <Compile Include="Models\SlotBooking.cs" />
     <Compile Include="Models\SlotBookingEdit.cs" />
-    <Compile Include="Models\SpecializationDept.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,32 +255,23 @@
     <Content Include="Views\Home\Patientsignup.cshtml" />
     <Content Include="Views\Home\Doctorsignup.cshtml" />
     <Content Include="Views\Home\Signin.cshtml" />
-    <Content Include="Views\Patient\patient.cshtml" />
-    <Content Include="Views\Home\Welcome.cshtml" />
-    <Content Include="Views\Shared\_LayoutPage2.cshtml" />
     <Content Include="Views\Doctor\Index.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
     <Content Include="Views\Doctor\Details.cshtml" />
     <Content Include="Views\Shared\_DoctorLayoutPage.cshtml" />
     <Content Include="Views\Doctor\Edit.cshtml" />
     <Content Include="Views\Doctor\Delete.cshtml" />
-    <Content Include="Views\Patient\SlotBooking.cshtml" />
     <Content Include="Views\Shared\_PatientLayoutPage.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Patient\Details.cshtml" />
     <Content Include="Views\Admin\Deletedoctor.cshtml" />
     <Content Include="Views\Patient\Edit.cshtml" />
     <Content Include="Views\Patient\Delete.cshtml" />
-    <Content Include="Views\Patient\BookingDoctorPatient.cshtml" />
-    <Content Include="Views\Patient\Booking.cshtml" />
     <Content Include="Views\Admin\Addadmin.cshtml" />
     <Content Include="Views\Admin\EditAdmin.cshtml" />
     <Content Include="Views\Admin\AdminDelete.cshtml" />
     <Content Include="Views\Patient\viewappointment.cshtml" />
-    <Content Include="Views\Patient\Editappointment.cshtml" />
     <Content Include="Views\Patient\DeleteAppointment.cshtml" />
-    <Content Include="Views\Shared\_PatientDetails.cshtml" />
     <Content Include="Views\Patient\ViewProfile.cshtml" />
     <Content Include="Views\Doctor\Getappointmentdetails.cshtml" />
     <Content Include="Views\Error.cshtml" />
@@ -294,6 +284,7 @@
     <Content Include="Views\Home\AddConcern.cshtml" />
     <Content Include="Views\Admin\ViewMessageList.cshtml" />
     <Content Include="Views\Admin\DeleteMessageList.cshtml" />
+    <Content Include="Views\Patient\BookingDoctorPatient3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

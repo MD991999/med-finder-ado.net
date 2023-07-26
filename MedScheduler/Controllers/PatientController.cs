@@ -221,7 +221,7 @@ namespace MedScheduler.Controllers
         [HttpPost]
         public ActionResult SlotBooking(int id)
         {
-
+           
             return View();
         }
 
@@ -257,60 +257,69 @@ namespace MedScheduler.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult BookingDoctorPatient(int id)
+        public ActionResult BookingDoctorPatient3(int id)
         {
             Dal dal = new Dal();
             string Username = Session["username"].ToString();
+            var slotBooking = new SlotBooking();
             Doctor_Patient_SlotBooking doctor_Patient_SlotBooking = new Doctor_Patient_SlotBooking();
             doctor_Patient_SlotBooking.DoctorSignUp = dal.particulardoctor(id);
             doctor_Patient_SlotBooking.PatientSignUp = dal.viewparticularpatientdetails(Username);
+            //Session["PatientDetails"] = doctor_Patient_SlotBooking;
+            doctor_Patient_SlotBooking.SlotBooking = slotBooking;
             return View(doctor_Patient_SlotBooking);
 
         }
+
 
         /// <summary>
         ///  to insert the slot booking details in database    ,where this view has multiple models in it.
         /// </summary>
         /// <param name="slotBooking"></param>
         /// <returns>this function returns a boolean value depends on whether they are inserted properly or not</returns>
-        [HttpPost]
-        public ActionResult BookingDoctorPatient(Doctor_Patient_SlotBooking model)
+      [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BookingDoctorPatient3(Doctor_Patient_SlotBooking model)
         {
             Dal dal = new Dal();
-            ModelState.Clear();
-            try
-            {
-                if (ModelState.IsValid)
+           
+                try
                 {
-                    bool isinserted = false;
-                    isinserted = dal.BookingOnlineInsert(model.SlotBooking);
-                    if (isinserted)
+                    ModelState.Clear();
+                    if (ModelState.IsValid)
                     {
-                        TempData["SuccessMessage"] = "Booking Successfull";
-                        return RedirectToAction("ViewProfile", "Patient");
+                        bool isinserted = false;
+                        isinserted = dal.BookingOnlineInsert(model.SlotBooking);
+                        if (isinserted)
+                        {
+                            TempData["SuccessMessage"] = "Booking Successfull";
+                            return RedirectToAction("ViewProfile", "Patient");
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Booking Cancelled";
+                            return RedirectToAction("Index", "Patient");
+                        }
                     }
                     else
                     {
-                        TempData["ErrorMessage"] = "Booking Cancelled";
-                        return View("Index", "Patient");
+                        TempData["ErrorMessage"] = "Validation Error";
+                        return RedirectToAction("Index", "Patient");
                     }
                 }
-                else
+                catch (Exception error)
                 {
-                    TempData["ErrorMessage"] = "Validation Error";
-                    return View("Index", "Patient");
+                    ErrorLogger.LogError(error);
+                    TempData["ErrorMessage"] = error.Message;
+                    //  return View("Index", "Patient");
+                    return RedirectToAction("Index", "Patient");
                 }
             }
-            catch (Exception error)
-            {
-                ErrorLogger.LogError(error);
-                TempData["ErrorMessage"] = error.Message;
-                //  return View("Index", "Patient");
-                return View();
-            }
-
-        }
-
+          
+        
+          
+    
+        
         /// <summary>
         ///  to get the complete list of appointment details of a  patient   based on patient id
         /// </summary>

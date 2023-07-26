@@ -1,71 +1,120 @@
-﻿@model IEnumerable<MedScheduler.Models.SlotBooking>
+﻿@using System.Globalization;
+
+@model IEnumerable<MedScheduler.Models.SlotBooking>
 @{
     ViewBag.Title = "viewappointment";
     Layout = "~/Views/Shared/_PatientLayoutPage.cshtml";
 }
 @if (TempData["ErrorMessage"] != null)
-            {
-                <div class="text-danger">@TempData["ErrorMessage"]</div>
-            }
-<div class="d-flex flex-row justify-content-between w-100 m-5" >
-   <div><h1 class="text-danger fs-1 fw-bold">Appointment list</h1></div> 
-   <div>
-       <button class="btn  btn-warning">
-           @Html.ActionLink("Create new", "Index", "Patient", new { @class = "nav-link fs-5" })
-       </button>
-   </div>
-</div>
-<table class="table table-success table-striped-columns">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AppointmentId)
-        </th>
-        <th class="w-25">
-            @Html.DisplayNameFor(model => model.Doctorname)
-        </th>
-        <th class="w-25">
-            @Html.DisplayNameFor(model => model.Specialisation)
-        </th>
-        <th class="w-25">
-            @Html.DisplayNameFor(model => model.Message)
-        </th>
-
-        <th class="w-50">
-            @Html.DisplayNameFor(model => model.Date_of_appointment)
-        </th>
-        <th class="w-50">
-            @Html.DisplayNameFor(model => model.Time_of_appointment)
-        </th>
-        <th></th>
-    </tr>
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AppointmentId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doctorname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Specialisation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Message)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date_of_appointment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time_of_appointment)
-        </td>
-        <td>
-            <button class="text-success border-0 m-2">
-                @Html.ActionLink("Edit", "Editappointment1", "Patient", new { id = item.AppointmentId }, new { @class = "nav-link" })
-            </button>
-            <button class="text-danger border-0 m-2">
-                @Html.ActionLink("Delete", "Deleteappointment", "Patient", new { id = item.AppointmentId }, new { @class = "nav-link" })
-            </button>
-        </td>
-    </tr>
+{
+    <div class="text-danger">@TempData["ErrorMessage"]</div>
 }
-</table>
+<div class="d-flex flex-row justify-content-between w-100 m-5">
+    <div><h1 class="text-danger fs-1 fw-bold">Appointment list</h1></div>
+    <div>
+        <button class="btn  btn-warning">
+            @Html.ActionLink("Create new", "Index", "Patient", new { @class = "nav-link fs-5" })
+        </button>
+    </div>
+</div>
+
+
+
+
+@if (Model != null)
+{
+
+    <h3 class="text-danger fs-4 fw-bold">New appointments</h3>
+    <table class="table table-success table-striped-columns">
+        <thead>
+            <tr>
+                <th class="text-secondary">Slot id</th>
+                <th class="text-secondary">Doctor name</th>
+                <th class="text-secondary">Specialization</th>
+                <th class="text-secondary">Message</th>
+                <th class="text-secondary">Date of appointment</th>
+                <th class="text-secondary">Time of appointment</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                DateTime appointmentDate = DateTime.ParseExact(item.Date_of_appointment, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                if (appointmentDate >= DateTime.Now.Date)
+                {
+                    <tr>
+                        <td>@item.AppointmentId</td>
+
+                        <td>@item.Firstname @item.Lastname</td>
+                        <td>@item.Specialisation</td>
+                        <td>@item.Message</td>
+                        <td>@item.Date_of_appointment</td>
+                        <td>@item.Time_of_appointment</td>
+                        <td>
+                            <button class="text-success border-0 m-2">
+                                @Html.ActionLink("Edit", "Editappointment1", "Patient", new { id = item.AppointmentId }, new { @class = "nav-link" })
+                            </button>
+                            <button class="text-danger border-0 m-2">
+                                @Html.ActionLink("Delete", "Deleteappointment", "Patient", new { id = item.AppointmentId }, new { @class = "nav-link" })
+                            </button>
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+
+
+
+    <h3 class="text-primary fs-4 fw-bold">Old appointments</h3>
+    <table class="table table-success table-striped-columns">
+        <thead>
+            <tr>
+                <th class="text-secondary">Slot id</th>
+                <th class="text-secondary">Doctor name</th>
+                <th class="text-secondary">Specialization</th>
+                <th class="text-secondary">Message</th>
+                <th class="text-secondary">Date of appointment</th>
+                <th class="text-secondary">Time of appointment</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                DateTime appointmentDate = DateTime.ParseExact(item.Date_of_appointment, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                if (appointmentDate < DateTime.Now.Date)
+                {
+                    <tr>
+                        <td>@item.AppointmentId</td>
+                        <td>@item.Firstname @item.Lastname</td>
+                        <td>@item.Specialisation</td>
+                        <td>@item.Message</td>
+                        <td>@item.Date_of_appointment</td>
+                        <td>@item.Time_of_appointment</td>
+                        <td>
+                            <button class="text-success border-0 m-2">
+                                @Html.ActionLink("Edit", "Editappointment1", "Patient", new { id = item.AppointmentId }, new { @class = "nav-link" })
+                            </button>
+                            <button class="text-danger border-0 m-2">
+                                @Html.ActionLink("Delete", "Deleteappointment", "Patient", new { id = item.AppointmentId }, new { @class = "nav-link" })
+                            </button>
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+}
+else
+{
+    <p>No appointment details available.</p>
+}
+

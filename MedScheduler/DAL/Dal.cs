@@ -691,7 +691,7 @@ namespace MedScheduler.DAL
         }
 
         /// <summary>
-        /// /   function for online booking purpose'
+        /// for online booking purpose'
         /// /// </summary>
         /// <param name="SlotBooking"></param>
         /// <returns>this function returns a true /false depending upon whether the value get inserted or not</returns>

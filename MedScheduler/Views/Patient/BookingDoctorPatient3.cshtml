@@ -1,0 +1,303 @@
+﻿@using MedScheduler.Models
+@model MedScheduler.Models.Doctor_Patient_SlotBooking
+
+@{
+    ViewBag.Title = "BookingDoctorPatient3";
+    Layout = "~/Views/Shared/_PatientLayoutPage.cshtml";
+}
+<link href="~/Content/Stylesheet/Patientscontoller.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h3 class="text-secondary">Book your slot</h3>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class=" d-flex justify-content-between flex-row">
+            <div class="col-4">
+                @foreach (var patient in Model.PatientSignUp)
+                {
+                    <div class=" p-1 fs-5 fw-bold w-75"><strong class="fs-4 fw-bolder text-primary">Patient Id:</strong> @patient.Id  </div>
+                    <div class="p-1 fs-5 fw-bold  w-75"><strong class="fs-4 fw-bolder text-primary">Patient Name:</strong> @patient.Firstname @patient.Lastname  </div>
+                    <div class=" p-1 fs-5 fw-bold  w-75"><strong class="fs-4 fw-bolder text-primary">Gender:</strong> @patient.Gender  </div>
+                    <div class=" p-1 fs-5 fw-bold  w-75"><strong class="fs-4 fw-bolder text-primary">Email:</strong> @patient.Email  </div>
+                    <div class=" p-1 fs-5 fw-bold  w-75"><strong class="fs-4 fw-bolder text-primary">Phone:</strong> @patient.Phonenumber  </div>
+
+                }
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+                @foreach (var doctor in Model.DoctorSignUp)
+                {
+                    <div class=" p-1 fs-5 fw-bold w-75"><strong class="fs-4 fw-bolder text-primary">Doctor Id:</strong> @doctor.Id  </div>
+                    <div class=" p-1 fs-5 fw-bold w-75"><strong class="fs-4 fw-bolder text-primary">Doctor Name:</strong> @doctor.Firstname @doctor.Lastname  </div>
+                    <div class=" p-1 fs-5 fw-bold w-75"><strong class="fs-4 fw-bolder text-primary">Specialization:</strong> @doctor.Specialisation  </div>
+
+
+                }
+            </div>
+        </div>
+
+
+
+        @*  <div class="form-horizontal">
+            <h4>SlotBooking</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.PatientId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.PatientId, new { htmlAttributes = new { @class = "form-control", Values = $"{}" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.PatientId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.DoctorId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.DoctorId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.DoctorId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.Firstname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.Firstname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.Lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.Lastname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.Age, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.Age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.Gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.Message, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.Message, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.Doctorname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.Doctorname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.Doctorname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.Specialisation, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.Specialisation, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.Specialisation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SlotBooking.Date_of_appointment, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SlotBooking.Date_of_appointment, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SlotBooking.Date_of_appointment, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @* @Html.LabelFor(model => model.Time_of_appointment, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Time_of_appointment, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Time_of_appointment, "", new { @class = "text-danger" })
+                    </div>
+                <input type="datetime-local" id="datetimepicker" name="appointmentDateTime" />
+
+                @Html.ValidationMessageFor(model => model.SlotBooking.Time_of_appointment, "", new { @class = "text-danger" })
+                <div class="text-danger" id="error-div"></div>
+
+            </div>
+        *@
+
+
+
+        <!-- Your form starts here -->
+        <form method="post" action="/Patient/BookingDoctorPatient3" id="myForm">
+            <!-- Replace "/YourController/SaveData" with the appropriate action method URL that will handle form submission -->
+            <!-- Display Doctor details -->
+          
+
+                     
+
+
+
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4 p-3 d-flex flex-column">
+                            <h2>Fill the below details ...</h2>
+                            @foreach (var doctor in Model.DoctorSignUp)
+                            {
+                                <input type="hidden" name="model.SlotBooking.DoctorId" value="@doctor.Id">
+                                <input type="hidden" name="model.SlotBooking.DoctorName" value="@doctor.Firstname @doctor.Lastname">
+                                <input type="hidden" name="model.SlotBooking.Specialisation" value="@doctor.Specialisation">
+                            }
+
+                            <!-- Patient details -->
+                            @foreach (var patient in Model.PatientSignUp)
+                            {
+                                <input type="hidden" name="model.SlotBooking.PatientId" value="@patient.Id">
+                                <input type="hidden" name="model.SlotBooking.Firstname" value="@patient.Firstname @patient.Lastname">
+                                <input type="hidden" name="model.SlotBooking.Lastname" value=" @patient.Lastname">
+
+                                <input type="hidden" name="model.SlotBooking.Gender" value="@patient.Gender">
+                                <input type="hidden" name="model.SlotBooking.Email" value="@patient.Email">
+                                <input type="hidden" name="model.SlotBooking.Phone" value="@patient.Phonenumber">
+                            }
+                        <div>
+                            <div class="d-flex flex-row justify-content-">
+                                <label class="fs-5 fw-bolder">Age:</label>
+                                <small class="required-indicator text-danger fs-2 fw-bolder">*</small>
+                                </div>
+                                <input type="number" id="Agevalidation" class="form-control border border-secondary" name="model.SlotBooking.Age" min="0" onfocusout="Agevalidation()" required />
+
+                               
+                            </div>
+                            <div>
+                                <div class="d-flex flex-row justify-content-">
+                                    <label class="fs-5 fw-bolder">Message:</label>
+                                    <small class="required-indicator text-danger fs-2 fw-bolder">*</small>
+                                </div>
+
+                                <input type="text" id="Messagevalidation" class="form-control border border-secondary" name="model.SlotBooking.Message" onfocusout="Messagevalidation()" required />
+
+                            </div>
+                            <div>
+                                <div class="d-flex flex-row justify-content-">
+                                    <label class="fs-5 fw-bolder">Date of appointment:</label>
+                                    <small class="required-indicator text-danger fs-2 fw-bolder">*</small>
+                                    </div>
+                                    <input type="date" class="form-control border border-secondary" id="dobvalidation" name="model.SlotBooking.Date_of_appointment" min="@DateTime.Now.ToString("yyyy-MM-dd")" onfocusout="dobvalidation()" required />
+
+                                </div>
+                            <div>
+                                <div class="d-flex flex-row justify-content-">
+                                    <label class="fs-5 fw-bolder">Time of appointment:</label>
+                                    <small class="required-indicator text-danger fs-2 fw-bolder">*</small>
+                                    </div>
+                                    <select name="model.SlotBooking.Time_of_appointment" id="timevalidation" class="w-100 text-dark form-control border border-secondary" onfocusout="timevalidation()" required>
+                                        <option value="" class="w-100 text-dark">Select from dropdown</option>
+                                        <option value="10:00 AM-12:00 PM" class="w-100 text-dark">10:00 AM-12:00 PM</option>
+                                        <option value="01:00 PM-04:00 PM" class="w-100 text-dark">01:00 PM-04:00 PM</option>
+                                        <option value="06:00 PM-10:00 PM" class="w-100 text-dark">06:00 PM-10:00 PM</option>
+                                        <option value="12:00 AM-04:00 AM" class="w-100 text-dark">12:00 AM-04:00 AM</option>
+                                        <option value="06:00 AM-09:00 AM" class="w-100 text-dark">06:00 AM-09:00 AM</option>
+                                    </select>
+                                   
+                                </div>
+                                <input class="w-25 h-25 bg-success border-0 fs-5 fw-bolder mt-2" type="submit" value="Submit" id="button">
+                            </div>
+                        <div class="col-4"></div>
+
+                 
+                <!--    @foreach (var doctor in Model.DoctorSignUp)
+                            {
+                                <input type="" name="DoctorId" value="@doctor.Id">
+                        <div>Doctor id: @doctor.Id</div>
+
+                        <div>Doctor Name: @doctor.Firstname @doctor.Lastname</div>
+                        <div>Specialty: @doctor.Specialisation</div>
+                    }            </div>
+                    </div>
+
+                    <div class="col-6">
+                        <h2>Patient Details</h2>
+                        <div>
+                            @foreach (var patient in Model.PatientSignUp)
+                            {
+                                <div>Patient id: @patient.Id</div>
+                                <div>Patient Name: @patient.Firstname @patient.Lastname</div>
+                                <div>Gender: @patient.Gender</div>
+                                <div>Email: @patient.Email</div>
+                                <div>Phone: @patient.Phonenumber</div>
+                            }
+                        </div>
+                    </div>
+                </div>-->
+                <!-- Add other input fields for the form as needed -->
+                <!-- For example, you can add appointment date, time, etc. -->
+                <!-- Submit button -->
+                
+            </div>
+        </form>
+
+
+
+
+
+
+    </div>
+
+    @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+            <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>*@
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script src="~/Scripts/Javascript/patientcontroller.js"></script>

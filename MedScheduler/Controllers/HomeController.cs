@@ -65,7 +65,7 @@ namespace MedScheduler.Controllers
                     if (isinserted)
                     {
                         TempData["PatientSignupSuccessMessage"] = "Successfully registered";
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Signin","Home");
                     }
                     else
                     {
@@ -128,7 +128,7 @@ namespace MedScheduler.Controllers
                 }
                 else
                 {
-                    Console.WriteLine("error");
+                   
                     TempData["ErrorMessage"] = "Validation error";
                     return RedirectToAction("Index");
                 }
@@ -263,7 +263,7 @@ namespace MedScheduler.Controllers
                 return View();
             }
         }  
-}
+ }
 }
 
                 

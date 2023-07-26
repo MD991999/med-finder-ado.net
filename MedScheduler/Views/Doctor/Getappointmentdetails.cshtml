@@ -33,33 +33,19 @@
                 if (appointmentDate < DateTime.Now.Date)
                 {
                     <tr>
-                        <td class="w-25">@appointment.AppointmentId</td>
-                        <td class="w-25">@appointment.PatientId</td>
+                        <td >@appointment.AppointmentId</td>
+                        <td >@appointment.PatientId</td>
                         <td>@appointment.Firstname</td>
                         <td>@appointment.Lastname</td>
                         <td>@appointment.Age</td>
                         <td>@appointment.Gender</td>
-                        <td class="w-25">@appointment.Phone</td>
-                        <td class="w-25">@appointment.Message</td>
-                        <td class="w-25">@appointment.Date_of_appointment</td>
-                        <td class="w-25">@appointment.Time_of_appointment</td>
+                        <td >@appointment.Phone</td>
+                        <td >@appointment.Message</td>
+                        <td >@appointment.Date_of_appointment</td>
+                        <td >@appointment.Time_of_appointment</td>
                     </tr>
                 }
-                else
-                {
-                    <tr>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                    </tr>
-                }
+               
             }
         </tbody>
     </table>
@@ -100,21 +86,7 @@
                         <td>@appointment.Time_of_appointment</td>
                     </tr>
                 }
-                else
-                {
-                    <tr>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                        <td class="text-center">Null</td>
-                    </tr>
-                }
+                
             }
         </tbody>
     </table>
