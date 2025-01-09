@@ -1,5 +1,4 @@
 ﻿body {
-  
 }
 
 .displaydetails {
@@ -11,6 +10,7 @@
     background-color: #fff;
     transition: right 0.3s ease-in-out;
 }
+
 .displaydetailsClick {
     right: 0;
 }
@@ -21,15 +21,17 @@
     color: black;
     font-size: 25px;
     font-weight: bolder;
-    text-align:center;
-   border:1px solid black; 
+    text-align: center;
+    border: 1px solid black;
 }
-.doctor-profile-option img{
-    mix-blend-mode:multiply;
-}
-.doctor-view-option-left{
-    background-color:black;
-    opacity:0.8;
+
+    .doctor-profile-option img {
+        mix-blend-mode: multiply;
+    }
+
+.doctor-view-option-left {
+    background-color: brown;
+    opacity: 0.3;
 }
 
 .smallshow {
@@ -39,6 +41,7 @@
 .smallhidden {
     display: hidden;
 }
-.bodyContainer{
-    margin-top:100px;
+
+.bodyContainer {
+    margin-top: 100px;
 }

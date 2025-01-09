@@ -1,20 +1,20 @@
 ﻿body {
-    background-image:url("../Pictures/patient-index-bg.jpeg");
-    background-size:cover;
+    background-image: url("../Pictures/patient-index-bg.jpeg");
+    background-size: cover;
 }
 
 .card {
-    /*opacity:0.2;*/
+    opacity: 0.2;
 }
 
 .displaydetails {
     position: fixed;
     top: 57px;
-    right: -400px; 
-width: 400px;
-height: 100%;
-background-color: #fff;
-transition: right 0.3s ease-in-out;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    background-color: #fff;
+    transition: right 0.3s ease-in-out;
 }
 
 .displaydetailsClick {
@@ -24,11 +24,13 @@ transition: right 0.3s ease-in-out;
 .additional-details {
     background-color: lightsteelblue;
 }
-.doctor-card{
-    height:500px;
+
+.doctor-card {
+    height: 500px;
 }
-.doctor-image{
-    object-fit:cover;
+
+.doctor-image {
+    object-fit: cover;
 }
 
 .view-profile-left, .view-profile-right {
@@ -36,13 +38,15 @@ transition: right 0.3s ease-in-out;
     height: 400px;
 }
 
-.profile-details{
-font-size:20px;
-font-weight:bolder;
+.profile-details {
+    font-size: 20px;
+    font-weight: bolder;
 }
-.profile-details-value{
-    font-size:18px;
+
+.profile-details-value {
+    font-size: 18px;
 }
+
 .smallshow {
     display: block;
 }
@@ -50,8 +54,8 @@ font-weight:bolder;
 .smallhidden {
     display: hidden;
 }
+
 .required-indicator {
     color: red;
     font-size: 25px;
-   
 }
